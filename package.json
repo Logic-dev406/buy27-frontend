@@ -57,5 +57,12 @@
   "main": "postcss.config.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Logic-dev406/buy27-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Logic-dev406/buy27-frontend/issues"
+  }
 }
