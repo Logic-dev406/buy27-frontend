@@ -2,32 +2,23 @@ import * as actionTypes from "../constants/authConstants";
 
 export const authReducer = (state = { user: {} }, action) => {
   switch (action.type) {
-    case actionTypes.USER_LOADED:
+    case actionTypes.SIGNUP_REQUEST:
       return {
-        ...state,
-        isAuthenticated: true,
-        loading: false,
-        user: action.payload,
+        loading: true,
       };
     case actionTypes.SIGNUP_SUCCESS:
       return {
-        ...state,
-        ...action.payload,
-        isAuthenticated: true,
         loading: false,
+        user: action.payload,
       };
-    case LOGIN_SUCCESS:
+    case actionTypes.LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
       return {
-        ...state,
-        ...action.payload,
-        isAuthenticated: true,
+        user: action.payload,
         loading: false,
       };
     case actionTypes.UPDATE_PROFILE_SUCCESS:
       return {
-        ...state,
-        isAuthenticated: true,
         loading: false,
         user: action.payload,
       };
@@ -36,14 +27,12 @@ export const authReducer = (state = { user: {} }, action) => {
     case actionTypes.SIGNUP_FAIL:
       localStorage.removeItem("token");
       return {
-        ...state,
         token: null,
-        isAuthenticated: false,
         loading: false,
         user: null,
         error: action.payload,
       };
-    case actionTypes.default:
+    default:
       return state;
   }
 };
