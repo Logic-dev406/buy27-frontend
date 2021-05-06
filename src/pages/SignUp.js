@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import VisibilityIcon from "@material-ui/icons/Visibility";
@@ -20,8 +20,13 @@ const Register = ({ history }) => {
   const dispatch = useDispatch();
 
   const signUp = useSelector((state) => state.auth);
-  const { loading, error, isAuthenticated, user } = signUp;
-  console.log(signUp);
+  const { loading, error, isAuthenticated } = signUp;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.push("/login");
+    }
+  }, [history, isAuthenticated]);
 
   const [errors, setErrors] = useState({});
 
@@ -35,14 +40,9 @@ const Register = ({ history }) => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     setErrors(validate(values));
     dispatch(signup(values));
-    if (!isAuthenticated) {
-      return null;
-    } else {
-      history.push("/login");
-    }
   };
 
   const ToggleShowPassword = () => {
@@ -106,6 +106,8 @@ const Register = ({ history }) => {
           {errors.email && (
             <p className="text-red-500 text-sm ">{errors.email}</p>
           )}
+
+          {error ? <h1 className=" text-red-500 text-sm ">{error}</h1> : ""}
         </div>
         <div className="flex flex-col px-4 md:px-8 mt-2">
           <div className="text-sm text-primary-dark mb-1">
