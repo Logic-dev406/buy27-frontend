@@ -9,19 +9,19 @@ import { useDispatch, useSelector } from "react-redux";
 //Actions
 import { signUp as signup } from ".././redux/actions/authAction";
 
-const Register = () => {
+const Register = ({ history }) => {
   const [values, setvalues] = useState({
     email: "",
     firstName: "",
     lastName: "",
-    mobilenumber: "",
     phone: "",
     password: "",
   });
   const dispatch = useDispatch();
 
-  const signUp = useSelector((state) => state.signUp);
-  const { loading, error, user } = signUp;
+  const signUp = useSelector((state) => state.auth);
+  const { loading, error, isAuthenticated, user } = signUp;
+  console.log(signUp);
 
   const [errors, setErrors] = useState({});
 
@@ -38,6 +38,11 @@ const Register = () => {
   const handleSubmit = () => {
     setErrors(validate(values));
     dispatch(signup(values));
+    if (!isAuthenticated) {
+      return null;
+    } else {
+      history.push("/login");
+    }
   };
 
   const ToggleShowPassword = () => {
@@ -104,7 +109,7 @@ const Register = () => {
         </div>
         <div className="flex flex-col px-4 md:px-8 mt-2">
           <div className="text-sm text-primary-dark mb-1">
-            <label htmlFor="mobilenumber">Mobile Number</label>
+            <label htmlFor="phone">Mobile Number</label>
           </div>
           <input
             onChange={handleInput}
@@ -114,8 +119,8 @@ const Register = () => {
             placeholder="Enter Phone Number"
             className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-10 md:h-12 w-72 md:w-96"
           />
-          {errors.mobilenumber && (
-            <p className="text-red-500 text-sm ">{errors.mobilenumber}</p>
+          {errors.phone && (
+            <p className="text-red-500 text-sm ">{errors.phone}</p>
           )}
         </div>
         <div className="flex flex-col px-4 md:px-8">
@@ -152,7 +157,7 @@ const Register = () => {
           onClick={handleSubmit}
           className="h-10 px-20 md:px-32 mt-2 bg-primary-dark hover:bg-primary-light focus:outline-none text-white rounded"
         >
-          Create an Account
+          {loading ? "Loading..." : "Create an Account"}
         </button>
         <div className=" flex flex-col items-center w-72 md:w-96 text-xs md:text-sm text-primary-dark font-semibold md:font-normal my-5 ">
           <div className="flex items-center ">

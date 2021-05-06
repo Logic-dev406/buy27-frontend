@@ -5,11 +5,17 @@ export const authReducer = (state = { user: {} }, action) => {
     case actionTypes.SIGNUP_REQUEST:
       return {
         loading: true,
+        isAuthenticated: false,
       };
     case actionTypes.SIGNUP_SUCCESS:
       return {
         loading: false,
+        isAuthenticated: true,
         user: action.payload,
+      };
+    case actionTypes.LOGIN_REQUEST:
+      return {
+        loading: true,
       };
     case actionTypes.LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
@@ -17,17 +23,13 @@ export const authReducer = (state = { user: {} }, action) => {
         user: action.payload,
         loading: false,
       };
-    case actionTypes.UPDATE_PROFILE_SUCCESS:
-      return {
-        loading: false,
-        user: action.payload,
-      };
 
     case actionTypes.LOGIN_FAIL:
     case actionTypes.SIGNUP_FAIL:
       localStorage.removeItem("token");
       return {
         token: null,
+        isAuthenticated: false,
         loading: false,
         user: null,
         error: action.payload,

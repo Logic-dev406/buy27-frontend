@@ -1,12 +1,12 @@
 export default function validateInfo(values) {
   let errors = {};
 
-  if (!values.firstname) {
-    errors.firstname = "First Name required";
+  if (!values.firstName) {
+    errors.firstName = "First Name required";
   }
 
-  if (!values.lastname) {
-    errors.lastname = "Last Name required";
+  if (!values.lastName) {
+    errors.lastName = "Last Name required";
   }
 
   if (!values.phone) {
@@ -29,10 +29,10 @@ export default function validateInfo(values) {
     errors.streetaddress = "Street Address is required";
   }
 
-  if (!values.emailaddress) {
-    errors.emailaddress = "Email required";
-  } else if (!/\S+@\S+\.\S+/.test(values.emailaddress)) {
-    errors.emailaddress = "Email address is invalid";
+  if (!values.email) {
+    errors.email = "Email required";
+  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+    errors.email = "Email address is invalid";
   }
 
   if (!values.password) {
