@@ -5,27 +5,39 @@ export const authReducer = (state = { user: {} }, action) => {
     case actionTypes.SIGNUP_REQUEST:
       return {
         loading: true,
-        isAuthenticated: false,
       };
     case actionTypes.SIGNUP_SUCCESS:
       return {
         loading: false,
-        isAuthenticated: true,
         user: action.payload,
       };
     case actionTypes.LOGIN_REQUEST:
       return {
         loading: true,
+        isAuthenticated: false,
       };
     case actionTypes.LOGIN_SUCCESS:
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
+      localStorage.setItem("isAuthenticated", true);
       localStorage.setItem("token", action.payload.token);
       return {
         user: action.payload,
+        isAuthenticated: true,
         loading: false,
       };
-
+    case actionTypes.USER_REQUEST:
+      return {
+        isAuthenticated: false,
+      };
+    case actionTypes.USER_LOADED:
+      return {
+        isAuthenticated: false,
+        user: action.payload,
+      };
+    case actionTypes.USER_FAIL:
     case actionTypes.LOGIN_FAIL:
     case actionTypes.SIGNUP_FAIL:
+      localStorage.removeItem("user");
       localStorage.removeItem("token");
       return {
         token: null,

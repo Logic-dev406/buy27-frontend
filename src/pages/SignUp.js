@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import VisibilityIcon from "@material-ui/icons/Visibility";
@@ -20,13 +20,7 @@ const Register = ({ history }) => {
   const dispatch = useDispatch();
 
   const signUp = useSelector((state) => state.auth);
-  const { loading, error, isAuthenticated } = signUp;
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      history.push("/login");
-    }
-  }, [history, isAuthenticated]);
+  const { loading, error } = signUp;
 
   const [errors, setErrors] = useState({});
 
@@ -42,7 +36,18 @@ const Register = ({ history }) => {
 
   const handleSubmit = (e) => {
     setErrors(validate(values));
-    dispatch(signup(values));
+    if (
+      values.email.length === 0 ||
+      values.firstName.length === 0 ||
+      values.lastName.length === 0 ||
+      values.password.length === 0 ||
+      values.phone.length === 0
+    ) {
+      return null;
+    } else {
+      dispatch(signup(values));
+      history.push("/login");
+    }
   };
 
   const ToggleShowPassword = () => {

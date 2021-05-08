@@ -14,4 +14,6 @@ export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const LOGOUT_FAIL = "LOGOUT_FAIL";
 
+export const USER_REQUEST = "USER_REQUEST";
 export const USER_LOADED = "USER_LOADED";
+export const USER_FAIL = "USER_FAIL";

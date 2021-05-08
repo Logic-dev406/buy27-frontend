@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import validate from "../helper/validator";
 import buy27logo from "../assets/images/buy27logo.png";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+
+//Actions
+import { login as logIn } from ".././redux/actions/authAction";
 
 export const SignIn = () => {
   const [values, setvalues] = useState({
@@ -16,6 +20,20 @@ export const SignIn = () => {
 
   const [ShowPassword, setShowPassword] = useState(false);
 
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const login = useSelector((state) => state.auth);
+  const { loading, error, isAuthenticated } = login;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.push("/Dashboard");
+    } else {
+      return null;
+    }
+  }, [history, isAuthenticated]);
+
   const handleInput = (e) => {
     const { name, value } = e.target;
     setvalues({
@@ -24,9 +42,13 @@ export const SignIn = () => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setErrors(validate(values));
-    console.log(values);
+    if (values.email.length === 0 || values.password.length === 0 || error) {
+      return null;
+    }
+    dispatch(logIn(values));
+    // history.push("/Dashboard");
   };
 
   const ToggleShowPassword = () => {
@@ -94,7 +116,7 @@ export const SignIn = () => {
           onClick={handleSubmit}
           className="h-10 px-32 mt-8 focus:outline-none bg-primary-dark hover:bg-primary-light text-white rounded"
         >
-          Login
+          {loading ? "Loading..." : "Login"}
         </button>
         <div className="flex flex-col items-center mt-10">
           <h1 className="text-sm">Dont have an Account?</h1>

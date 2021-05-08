@@ -33,9 +33,20 @@ const INITIAL_STATE = {
   },
 };
 
+const userInLocalStorage = localStorage.getItem("user")
+  ? JSON.parse(localStorage.getItem("user"))
+  : {};
+
+const USER_INITIAL_STATE = {
+  auth: {
+    user: userInLocalStorage,
+  },
+};
+
 const store = createStore(
   reducer,
   INITIAL_STATE,
+  // INITIAL_STATE,
   composeWithDevTools(applyMiddleware(...middleware))
 );
 
