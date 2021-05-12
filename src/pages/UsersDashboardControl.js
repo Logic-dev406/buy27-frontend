@@ -12,6 +12,11 @@ import {
   useRouteMatch,
   useHistory,
 } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+//Actions
+import { loadUser as loaduser } from ".././redux/actions/authAction";
+import { logDOM } from "@testing-library/dom";
 
 export const UsersDashboardControl = () => {
   const [isMobile, setisMobile] = useState(
@@ -25,13 +30,21 @@ export const UsersDashboardControl = () => {
   });
 
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const loadUser = useSelector((state) => state.auth);
+  const { loading, user, error } = loadUser;
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      return null;
+    if (localStorage.token) {
+      if (error) {
+        return history.push("/login");
+      }
+      dispatch(loaduser(user.user.id));
+      console.log(user.user.id);
+    } else {
+      history.push("/login");
     }
-
-    history.push("/login");
   }, [history]);
 
   let { path, url } = useRouteMatch();

@@ -48,7 +48,6 @@ export const SignIn = () => {
       return null;
     }
     dispatch(logIn(values));
-    // history.push("/Dashboard");
   };
 
   const ToggleShowPassword = () => {
