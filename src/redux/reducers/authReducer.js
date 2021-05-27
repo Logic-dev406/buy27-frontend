@@ -19,7 +19,7 @@ export const authReducer = (state = { user: {} }, action) => {
     case actionTypes.LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
       return {
-        user: action.payload,
+        data: action.payload,
         isAuthenticated: true,
         loading: false,
       };
@@ -29,7 +29,7 @@ export const authReducer = (state = { user: {} }, action) => {
       };
     case actionTypes.USER_LOADED:
       return {
-        isAuthenticated: false,
+        isAuthenticated: true,
         user: action.payload,
       };
     case actionTypes.USER_FAIL:

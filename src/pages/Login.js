@@ -25,10 +25,11 @@ export const SignIn = () => {
 
   const login = useSelector((state) => state.auth);
   const { loading, error, isAuthenticated } = login;
+  // console.log(error);
 
   useEffect(() => {
     if (isAuthenticated) {
-      history.push("/Dashboard");
+      // history.push("/Dashboard");
     } else {
       return null;
     }
@@ -44,7 +45,11 @@ export const SignIn = () => {
 
   const handleSubmit = async () => {
     setErrors(validate(values));
-    if (values.email.length === 0 || values.password.length === 0 || error) {
+    if (
+      values.email.length === 0 ||
+      values.password.length === 0 ||
+      values.password.length < 6
+    ) {
       return null;
     }
     dispatch(logIn(values));
@@ -76,6 +81,11 @@ export const SignIn = () => {
           />
           {errors.email && (
             <p className="text-red-500 text-sm ">{errors.email}</p>
+          )}
+          {error && (
+            <p className="text-red-500 text-sm ">
+              Incorrect E-mail or Password
+            </p>
           )}
         </div>
         <div className="flex flex-col px-4 md:px-8 mt-8">
@@ -109,6 +119,11 @@ export const SignIn = () => {
           </div>
           {errors.password && (
             <p className="text-red-500 text-sm ">{errors.password}</p>
+          )}
+          {error && (
+            <p className="text-red-500 text-sm ">
+              Incorrect E-mail or Password
+            </p>
           )}
         </div>
         <button
