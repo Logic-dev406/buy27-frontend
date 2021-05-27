@@ -37,7 +37,8 @@ export const UsersDashboardControl = () => {
   useEffect(() => {
     if (localStorage.token) {
       if (error) {
-        return history.push("/login");
+        console.log(error);
+        // return history.push("/login");
       }
       dispatch(loaduser(user.user.id));
       console.log(user.user.id);

@@ -28,8 +28,8 @@ export const SignIn = () => {
   // console.log(error);
 
   useEffect(() => {
-    if (isAuthenticated) {
-      // history.push("/Dashboard");
+    if (localStorage.token) {
+      history.push("/Dashboard");
     } else {
       return null;
     }
