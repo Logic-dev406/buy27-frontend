@@ -15,7 +15,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 //Actions
-import { loadUser as loaduser } from ".././redux/actions/authAction";
+import { loadUser } from ".././redux/actions/authAction";
 
 export const UsersDashboardControl = () => {
   const [isMobile, setisMobile] = useState(
@@ -31,20 +31,15 @@ export const UsersDashboardControl = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const loadUser = useSelector((state) => state.auth);
-  const { user, error } = loadUser;
-
+  const loaduser = useSelector((state) => state.auth);
+  const { user, error, isAuthenticated } = loaduser;
   useEffect(() => {
     if (localStorage.token) {
-      if (error) {
-        console.log(error);
-        // return history.push("/login");
-      }
-      dispatch(loaduser());
+      dispatch(loadUser());
     } else {
       history.push("/login");
     }
-  }, [history, dispatch, error, user]);
+  }, [history, dispatch]);
 
   let { path, url } = useRouteMatch();
 

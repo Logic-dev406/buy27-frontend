@@ -25,7 +25,6 @@ export const SignIn = () => {
 
   const login = useSelector((state) => state.auth);
   const { loading, error, isAuthenticated } = login;
-  // console.log(error);
 
   useEffect(() => {
     if (localStorage.token) {
