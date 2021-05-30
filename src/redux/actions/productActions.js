@@ -5,13 +5,11 @@ export const getProducts = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCTS_REQUEST });
 
-    const { response } = await axios.get(
-      "https://backend.buy27.ng/api/products"
-    );
+    const { data } = await axios.get("https://backend.buy27.ng/api/products");
 
     dispatch({
       type: actionTypes.GET_PRODUCTS_SUCCESS,
-      payload: response.data,
+      payload: data.data,
     });
   } catch (error) {
     dispatch({
@@ -28,13 +26,13 @@ export const getProductDetails = (slug) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCTS_DETAILS_REQUEST });
 
-    const { response } = await axios.get(
+    const { data } = await axios.get(
       `https://backend.buy27.ng/api/products/${slug}`
     );
 
     dispatch({
       type: actionTypes.GET_PRODUCTS_DETAILS_SUCCESS,
-      payload: response.data,
+      payload: data.data,
     });
   } catch (error) {
     dispatch({
@@ -51,13 +49,13 @@ export const getSearchedProducts = (input) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_SEARCHED_PRODUCTS_REQUEST });
 
-    const { response } = await axios.get(
+    const { data } = await axios.get(
       `https://backend.buy27.ng/api/products/search?name=${input}`
     );
 
     dispatch({
       type: actionTypes.GET_SEARCHED_PRODUCTS_SUCCESS,
-      payload: response.data,
+      payload: data.data,
     });
   } catch (error) {
     dispatch({
@@ -74,13 +72,13 @@ export const getFeaturedProducts = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_FEATURED_PRODUCTS_REQUEST });
 
-    const { response } = await axios.get(
+    const { data } = await axios.get(
       "https://backend.buy27.ng/api/products/get/featured/8"
     );
 
     dispatch({
       type: actionTypes.GET_FEATURED_PRODUCTS_SUCCESS,
-      payload: response.data,
+      payload: data.data,
     });
   } catch (error) {
     dispatch({

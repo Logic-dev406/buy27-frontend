@@ -6,14 +6,14 @@ export const signUp = (formData) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.SIGNUP_REQUEST });
 
-    const { response } = await axios.post(
+    const { data } = await axios.post(
       "https://backend.buy27.ng/api/users/register",
       formData
     );
 
     dispatch({
       type: actionTypes.SIGNUP_SUCCESS,
-      payload: response.data,
+      payload: data.data,
     });
   } catch (error) {
     dispatch({
@@ -30,14 +30,14 @@ export const login = (formData) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.LOGIN_REQUEST });
 
-    const { response } = await axios.post(
+    const { data } = await axios.post(
       "https://backend.buy27.ng/api/users/login",
       formData
     );
 
     dispatch({
       type: actionTypes.LOGIN_SUCCESS,
-      payload: response.data,
+      payload: data.data,
     });
   } catch (error) {
     dispatch({
@@ -50,18 +50,20 @@ export const login = (formData) => async (dispatch) => {
   }
 };
 
-export const loadUser = () => async (dispatch) => {
+export const loadUser = (id) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.USER_REQUEST });
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
 
-    const { response } = await axios.post(`https://backend.buy27.ng/api/users`);
+    const { data } = await axios.post(
+      `https://backend.buy27.ng/api/users/${id}`
+    );
 
     dispatch({
       type: actionTypes.USER_LOADED,
-      payload: response.data,
+      payload: data.data,
     });
   } catch (error) {
     dispatch({
