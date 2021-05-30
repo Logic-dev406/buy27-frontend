@@ -40,8 +40,7 @@ export const UsersDashboardControl = () => {
         console.log(error);
         // return history.push("/login");
       }
-      dispatch(loaduser(user.user.id));
-      console.log(user.user.id);
+      dispatch(loaduser());
     } else {
       history.push("/login");
     }

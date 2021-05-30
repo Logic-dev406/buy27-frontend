@@ -2,19 +2,19 @@ import * as actionTypes from "../constants/cartConstants";
 import axios from "axios";
 
 export const addToCart = (slug, qty) => async (dispatch, getState) => {
-  const { data } = await axios.get(
+  const { response } = await axios.get(
     `https://backend.buy27.ng/api/products/${slug}`
   );
 
   dispatch({
     type: actionTypes.ADD_TO_CART,
     payload: {
-      product: data.id,
-      name: data.name,
-      image: data.image,
-      price: data.price,
-      countInStock: data.countInStock,
-      slug: data.slug,
+      product: response.data.id,
+      name: response.data.name,
+      image: response.data.image,
+      price: response.data.price,
+      countInStock: response.data.countInStock,
+      slug: response.data.slug,
       qty,
     },
   });
