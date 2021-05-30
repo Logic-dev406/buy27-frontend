@@ -12,12 +12,12 @@ import {
   useRouteMatch,
   useHistory,
 } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 //Actions
 import { loadUser } from ".././redux/actions/authAction";
 
-export const UsersDashboardControl = () => {
+export const UsersDashboardControl = ({ isAuthenticated, user }) => {
   const [isMobile, setisMobile] = useState(
     window.matchMedia("(max-width:768px)").matches
   );
@@ -31,8 +31,6 @@ export const UsersDashboardControl = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const loaduser = useSelector((state) => state.auth);
-  const { user, error, isAuthenticated } = loaduser;
   useEffect(() => {
     if (localStorage.token) {
       dispatch(loadUser());

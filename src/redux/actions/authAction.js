@@ -74,26 +74,6 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-// export const loadUser = () => async (dispatch) => {
-//   try {
-//     dispatch({ type: actionTypes.USER_REQUEST });
-//     if (localStorage.token) {
-//       setAuthToken(localStorage.token);
-//     }
-
-//     const { data } = await axios.get("https://backend.buy27.ng/api/users/me");
-
-//     dispatch({
-//       type: actionTypes.USER_LOADED,
-//       payload: data.data,
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: actionTypes.USER_FAIL,
-//       payload:
-//         error.response && error.response.data.message
-//           ? error.response.data.message
-//           : error.message,
-//     });
-//   }
-// };
+export const logout = () => async (dispatch) => {
+  dispatch({ type: actionTypes.LOGOUT });
+};

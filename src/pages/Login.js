@@ -27,7 +27,7 @@ export const SignIn = () => {
   const { loading, error, isAuthenticated } = login;
 
   useEffect(() => {
-    if (localStorage.token) {
+    if (isAuthenticated || localStorage.token) {
       history.push("/Dashboard");
     } else {
       return null;

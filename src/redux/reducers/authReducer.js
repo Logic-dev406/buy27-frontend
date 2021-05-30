@@ -32,6 +32,7 @@ export const authReducer = (state = { user: {} }, action) => {
         isAuthenticated: true,
         user: action.payload,
       };
+    case actionTypes.LOGOUT:
     case actionTypes.USER_FAIL:
     case actionTypes.LOGIN_FAIL:
     case actionTypes.SIGNUP_FAIL:

@@ -43,6 +43,9 @@ const App = () => {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
+  const loaduser = useSelector((state) => state.auth);
+  const { user, isAuthenticated } = loaduser;
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
@@ -99,7 +102,13 @@ const App = () => {
             />
             <Route
               path="/Dashboard"
-              render={(props) => <UserDashboard {...props} />}
+              render={(props) => (
+                <UserDashboard
+                  {...props}
+                  user={user}
+                  isAuthenticated={isAuthenticated}
+                />
+              )}
             />
             <Route path="/About" component={About} />
             <Route path="/ContactUs" component={ContactUs} />
