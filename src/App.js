@@ -55,6 +55,8 @@ const App = () => {
           history.location.pathname === "/forgotpassword" ? null : (
             <Navbar
               cartItems={cartItems}
+              isAuthenticated={isAuthenticated}
+              user={user}
               getSearchedProducts={getSearchedProducts}
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}

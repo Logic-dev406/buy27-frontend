@@ -32,12 +32,12 @@ export const UsersDashboardControl = ({ isAuthenticated, user }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (localStorage.token) {
+    if (localStorage.token || isAuthenticated) {
       dispatch(loadUser());
     } else {
       history.push("/login");
     }
-  }, [history, dispatch]);
+  }, [history, dispatch, isAuthenticated]);
 
   let { path, url } = useRouteMatch();
 
