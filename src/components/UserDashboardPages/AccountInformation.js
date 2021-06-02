@@ -1,45 +1,138 @@
-import React from "react";
-import { Link, Switch, Route, useRouteMatch } from "react-router-dom";
-import UpdateAddress from "./UpdateAddress";
+import React, { useState } from "react";
+import validate from "../../helper/validator";
 
-export const AccountInformation = () => {
-  let { path, url } = useRouteMatch();
+export const UpdateAccountInfo = () => {
+  const [values, setvalues] = useState({
+    firstname: "",
+    emailaddress: "",
+    newpassword: "",
+    lastname: "",
+    currentpassword: "",
+    confirmpassword: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setvalues({
+      ...values,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = () => {
+    setErrors(validate(values));
+    console.log(values);
+  };
 
   return (
     <div>
-      <Switch>
-        <Route exact={true} path={path}>
-          <div className="bg-white h-screen pt-4 rounded">
-            <div className="flex pl-8 h-5 pb-5 ">
-              <Link
-                className="flex text-sm font-semibold bg-transparent hover:bg-primary-dark border border-primary-dark text-primary-dark hover:text-white rounded px-4 py-4 items-center"
-                to={`${url}/Edit`}
-              >
-                <h1>Update</h1>
-              </Link>
+      <div className="bg-white pt-4 h-full md:h-screen px-4 md:px-8 rounded text-primary-dark">
+        <h1 className="font-bold text-lg">Account Information</h1>
+        <div className="border-b  mt-3 mb-4 md:mb-8"></div>
+        <div className="flex flex-col md:flex-row items-center">
+          <div className="flex flex-col mr-0 md:mr-5">
+            <div className="flex flex-col mb-4 md:mb-8">
+              <label htmlFor="firstname">First Name</label>
+              <input
+                onChange={handleInput}
+                id="firstname"
+                type="text"
+                name="firstname"
+                value={values.firstname}
+                placeholder="Enter First Name"
+                className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
+              />
+              {errors.firstname && (
+                <p className="text-red-500 text-sm ">{errors.firstname}</p>
+              )}
             </div>
-            <div className="border-b mb-4 mt-7 "></div>
-            <div className="bg-transparent border h-40 md:w-96 mx-4 md:mx-8 rounded">
-              <div className="flex items-center justify-between px-4 py-2 text-sm font-semibold text-primary-dark ">
-                <div>
-                  <h1>Account Details</h1>
-                </div>
-              </div>
-              <div className="border-b  "></div>
-
-              <div className="flex flex-col pt-4 px-4 text-primary-dark text-sm">
-                <h1 className="my-1 ">Sunday Patrick</h1>
-                <h1 className="my-1 ">Sunday@gmail.com</h1>
-              </div>
+            <div className="flex flex-col mb-4 md:mb-8 ">
+              <label htmlFor="emailaddress">Email Address</label>
+              <input
+                onChange={handleInput}
+                id="emailaddress"
+                type="email"
+                name="emailaddress"
+                value={values.emailaddress}
+                placeholder="Enter Email Address"
+                className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
+              />
+              {errors.emailaddress && (
+                <p className="text-red-500 text-sm ">{errors.emailaddress}</p>
+              )}
+            </div>
+            <div className="flex flex-col mb-4 md:mb-8">
+              <label htmlFor="newpassword">New Password</label>
+              <input
+                onChange={handleInput}
+                id="newpassword"
+                type="password"
+                name="newpassword"
+                value={values.newpassword}
+                className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
+              />
+              {errors.password && (
+                <p className="text-red-500 text-sm ">{errors.password}</p>
+              )}
             </div>
           </div>
-        </Route>
-        <Route exact={true} path={`${path}/Edit`}>
-          <UpdateAddress />
-        </Route>
-      </Switch>
+          <div className="flex flex-col ml-0 md:ml-5">
+            <div className="flex flex-col mb-4 md:mb-8">
+              <label htmlFor="lastname">Last Name</label>
+              <input
+                onChange={handleInput}
+                id="lastname"
+                type="text"
+                name="lastname"
+                value={values.lastname}
+                placeholder="Enter Last Name"
+                className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
+              />
+              {errors.lastname && (
+                <p className="text-red-500 text-sm ">{errors.lastname}</p>
+              )}
+            </div>
+            <div className="flex flex-col mb-4 md:mb-8">
+              <label htmlFor="currentpassword">Current Password</label>
+              <input
+                onChange={handleInput}
+                id="currentpassword"
+                type="password"
+                name="currentpassword"
+                value={values.currentpassword}
+                className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
+              />
+              {errors.password && (
+                <p className="text-red-500 text-sm ">{errors.password}</p>
+              )}
+            </div>
+            <div className="flex flex-col mb-4 md:mb-8 ">
+              <label htmlFor="confirmpassword">Confirm Password</label>
+              <input
+                onChange={handleInput}
+                id="confirmpassword"
+                type="password"
+                name="confirmpassword"
+                value={values.confirmpassword}
+                className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
+              />
+              {errors.password && (
+                <p className="text-red-500 text-sm ">{errors.password}</p>
+              )}
+            </div>
+          </div>
+        </div>
+        <button
+          onClick={handleSubmit}
+          className="bg-primary-dark mb-4 md:mb-0 py-2 px-10 focus:outline-none rounded text-white"
+        >
+          Save Changes
+        </button>
+      </div>
     </div>
   );
 };
 
-export default AccountInformation;
+export default UpdateAccountInfo;
