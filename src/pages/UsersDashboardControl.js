@@ -84,13 +84,13 @@ export const UsersDashboardControl = ({ user }) => {
         )}
         <Switch>
           <Route exact={true} path={path}>
-            <AccountInfor />
+            <AccountInfor user={user} />
           </Route>
-          <Route exact={true} path={`${path}/My Account Info`}>
-            <AccountInfor />
+          <Route exact={true} path={`${path}`}>
+            <AccountInfor user={user} />
           </Route>
           <Route path={`${path}/Delivery Address`}>
-            <DeliveryAddress />
+            <DeliveryAddress user={user} />
           </Route>
           <Route path={`${path}/My Orders`} component={MyOrders}></Route>
           <Route

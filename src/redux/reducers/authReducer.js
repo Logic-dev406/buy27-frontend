@@ -28,6 +28,7 @@ export const authReducer = (state = { user: {} }, action) => {
         isAuthenticated: false,
       };
     case actionTypes.USER_LOADED:
+      localStorage.setItem("user", JSON.stringify(action.payload));
       return {
         isAuthenticated: true,
         user: action.payload,
@@ -37,6 +38,7 @@ export const authReducer = (state = { user: {} }, action) => {
     case actionTypes.LOGIN_FAIL:
     case actionTypes.SIGNUP_FAIL:
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
       return {
         token: null,
         isAuthenticated: false,

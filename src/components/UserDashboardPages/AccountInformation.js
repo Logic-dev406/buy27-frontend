@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import validate from "../../helper/validator";
 
-export const UpdateAccountInfo = () => {
+const UpdateAccountInfo = ({ user }) => {
   const [values, setvalues] = useState({
     firstname: "",
     emailaddress: "",
@@ -11,7 +10,16 @@ export const UpdateAccountInfo = () => {
     confirmpassword: "",
   });
 
-  const [errors, setErrors] = useState({});
+  //   useEffect(() => {
+  //     if (user) {
+  //       setvalues(
+  //         (values.firstname = user.firstname),
+  //         (values.emailaddress = user.emailaddress),
+  //         (values.lastname = user.lastname)
+  //       );
+  //     }
+  //     return null;
+  //   }, [user, values]);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -22,7 +30,6 @@ export const UpdateAccountInfo = () => {
   };
 
   const handleSubmit = () => {
-    setErrors(validate(values));
     console.log(values);
   };
 
@@ -44,9 +51,6 @@ export const UpdateAccountInfo = () => {
                 placeholder="Enter First Name"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.firstname && (
-                <p className="text-red-500 text-sm ">{errors.firstname}</p>
-              )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8 ">
               <label htmlFor="emailaddress">Email Address</label>
@@ -59,9 +63,6 @@ export const UpdateAccountInfo = () => {
                 placeholder="Enter Email Address"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.emailaddress && (
-                <p className="text-red-500 text-sm ">{errors.emailaddress}</p>
-              )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8">
               <label htmlFor="newpassword">New Password</label>
@@ -73,9 +74,6 @@ export const UpdateAccountInfo = () => {
                 value={values.newpassword}
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.password && (
-                <p className="text-red-500 text-sm ">{errors.password}</p>
-              )}
             </div>
           </div>
           <div className="flex flex-col ml-0 md:ml-5">
@@ -90,9 +88,6 @@ export const UpdateAccountInfo = () => {
                 placeholder="Enter Last Name"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.lastname && (
-                <p className="text-red-500 text-sm ">{errors.lastname}</p>
-              )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8">
               <label htmlFor="currentpassword">Current Password</label>
@@ -104,9 +99,6 @@ export const UpdateAccountInfo = () => {
                 value={values.currentpassword}
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.password && (
-                <p className="text-red-500 text-sm ">{errors.password}</p>
-              )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8 ">
               <label htmlFor="confirmpassword">Confirm Password</label>
@@ -118,9 +110,6 @@ export const UpdateAccountInfo = () => {
                 value={values.confirmpassword}
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.password && (
-                <p className="text-red-500 text-sm ">{errors.password}</p>
-              )}
             </div>
           </div>
         </div>
