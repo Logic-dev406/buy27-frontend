@@ -35,6 +35,7 @@ const Navbar = ({
         />
       ) : (
         <DesktopNavbar
+          user={user}
           isAuthenticated={isAuthenticated}
           getCartCount={getCartCount}
           getSearchedProducts={getSearchedProducts}

@@ -17,7 +17,7 @@ import { useDispatch } from "react-redux";
 //Actions
 import { loadUser } from ".././redux/actions/authAction";
 
-export const UsersDashboardControl = ({ isAuthenticated, user }) => {
+export const UsersDashboardControl = ({ user }) => {
   const [isMobile, setisMobile] = useState(
     window.matchMedia("(max-width:768px)").matches
   );
@@ -32,12 +32,12 @@ export const UsersDashboardControl = ({ isAuthenticated, user }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (localStorage.token || isAuthenticated) {
+    if (localStorage.token) {
       dispatch(loadUser());
     } else {
       history.push("/login");
     }
-  }, [history, dispatch, isAuthenticated]);
+  }, [history, dispatch]);
 
   let { path, url } = useRouteMatch();
 

@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 
 import { logout } from "../../redux/actions/authAction";
 
-const DesktopTopMenuBar = () => {
+const DesktopTopMenuBar = ({ isAuthenticated }) => {
   const [active, setActive] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const DesktopTopMenuBar = () => {
               setActive(!active);
             }}
           >
-            My Acount <ArrowDropDownIcon />
+            My Account <ArrowDropDownIcon />
           </button>
           {active && (
             <div className="bg-primary-dark flex flex-col  absolute border-t-2 border-grey-200 w-52 rounded">
@@ -70,7 +70,7 @@ const DesktopTopMenuBar = () => {
                 }}
                 className=" self-auto border-t-2 border-secondary-dark focus:outline-none bg-transparent hover:bg-primary-light rounded py-3 text-sm font-normal"
               >
-                LOGOUT
+                {isAuthenticated || localStorage.token ? "LOGOUT" : "LOGIN"}
               </button>
             </div>
           )}
