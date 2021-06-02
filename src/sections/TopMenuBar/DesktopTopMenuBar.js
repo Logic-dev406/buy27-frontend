@@ -38,7 +38,8 @@ const DesktopTopMenuBar = ({ isAuthenticated }) => {
               setActive(!active);
             }}
           >
-            My Account <ArrowDropDownIcon />
+            {isAuthenticated ? "My Account" : "Login / Signup"}{" "}
+            <ArrowDropDownIcon />
           </button>
           {active && (
             <div className="bg-primary-dark flex flex-col  absolute border-t-2 border-grey-200 w-52 rounded">
@@ -62,16 +63,30 @@ const DesktopTopMenuBar = ({ isAuthenticated }) => {
                   <ShoppingBasketOutlinedIcon className="mr-2" /> My Orders
                 </button>
               </div>
-              <button
-                onClick={() => {
-                  dispatch(logout());
-                  window.location.reload(false);
-                  return setActive(!active);
-                }}
-                className=" self-auto border-t-2 border-secondary-dark focus:outline-none bg-transparent hover:bg-primary-light rounded py-3 text-sm font-normal"
-              >
-                {isAuthenticated || localStorage.token ? "LOGOUT" : "LOGIN"}
-              </button>
+
+              {isAuthenticated ? (
+                <button
+                  onClick={() => {
+                    dispatch(logout());
+                    window.location.reload(false);
+                    return setActive(!active);
+                  }}
+                  className=" self-auto border-t-2 border-secondary-dark focus:outline-none bg-transparent hover:bg-primary-light rounded py-3 text-sm font-normal"
+                >
+                  LOGOUT{" "}
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    history.push("/login");
+                    window.location.reload(false);
+                    return setActive(!active);
+                  }}
+                  className=" self-auto border-t-2 border-secondary-dark focus:outline-none bg-transparent hover:bg-primary-light rounded py-3 text-sm font-normal"
+                >
+                  LOGIN
+                </button>
+              )}
             </div>
           )}
           <Link
