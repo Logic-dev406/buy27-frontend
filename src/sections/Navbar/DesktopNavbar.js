@@ -43,7 +43,7 @@ const DesktopNavbar = ({
 
   return (
     <div>
-      <TopMenuBar isAuthenticated={isAuthenticated} user={user} />
+      <TopMenuBar />
       <div className="flex px-0 md:px-52 w-full h-32 border-b-2 border-secondary-dark items-center justify-center md:justify-between">
         <div>
           <div>

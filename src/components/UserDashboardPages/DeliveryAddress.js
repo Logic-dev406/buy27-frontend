@@ -35,7 +35,7 @@ const DeliveryAddress = () => {
                 <h1 className="my-1">
                   <i>
                     <AccountCircleOutlinedIcon fontSize="small" />
-                  </i>
+                  </i>{" "}
                   {user ? user.firstName : ""} {user ? user.lastName : ""}
                 </h1>
                 <h1 className="my-1">
