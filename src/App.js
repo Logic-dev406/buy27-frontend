@@ -44,7 +44,7 @@ const App = () => {
   const { cartItems } = cart;
 
   const loaduser = useSelector((state) => state.auth);
-  const { user, isAuthenticated } = loaduser;
+  const { isAuthenticated } = loaduser;
 
   return (
     <Router>
@@ -56,7 +56,6 @@ const App = () => {
             <Navbar
               cartItems={cartItems}
               isAuthenticated={isAuthenticated}
-              user={user}
               getSearchedProducts={getSearchedProducts}
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
@@ -105,11 +104,7 @@ const App = () => {
             <Route
               path="/Dashboard"
               render={(props) => (
-                <UserDashboard
-                  {...props}
-                  user={user}
-                  isAuthenticated={isAuthenticated}
-                />
+                <UserDashboard {...props} isAuthenticated={isAuthenticated} />
               )}
             />
             <Route path="/About" component={About} />

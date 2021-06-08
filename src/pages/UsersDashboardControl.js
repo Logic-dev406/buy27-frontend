@@ -17,7 +17,7 @@ import { useDispatch } from "react-redux";
 //Actions
 import { loadUser } from ".././redux/actions/authAction";
 
-export const UsersDashboardControl = ({ user }) => {
+export const UsersDashboardControl = () => {
   const [isMobile, setisMobile] = useState(
     window.matchMedia("(max-width:768px)").matches
   );
@@ -84,13 +84,13 @@ export const UsersDashboardControl = ({ user }) => {
         )}
         <Switch>
           <Route exact={true} path={path}>
-            <AccountInfor user={user} />
+            <AccountInfor />
           </Route>
           <Route exact={true} path={`${path}`}>
-            <AccountInfor user={user} />
+            <AccountInfor />
           </Route>
           <Route path={`${path}/Delivery Address`}>
-            <DeliveryAddress user={user} />
+            <DeliveryAddress />
           </Route>
           <Route path={`${path}/My Orders`} component={MyOrders}></Route>
           <Route

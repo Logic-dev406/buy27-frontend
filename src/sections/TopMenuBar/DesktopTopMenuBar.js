@@ -13,6 +13,7 @@ const DesktopTopMenuBar = ({ isAuthenticated }) => {
   const [active, setActive] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
+  const user = JSON.parse(window.localStorage.getItem("user"));
 
   return (
     <div className="flex bg-primary-dark w-full h-6 text-white text-sm items-center justify-between px-52 relative ">
@@ -38,8 +39,7 @@ const DesktopTopMenuBar = ({ isAuthenticated }) => {
               setActive(!active);
             }}
           >
-            {isAuthenticated ? "My Account" : "Login / Signup"}{" "}
-            <ArrowDropDownIcon />
+            {user ? "My Account" : "Login / Signup"} <ArrowDropDownIcon />
           </button>
           {active && (
             <div className="bg-primary-dark flex flex-col  absolute border-t-2 border-grey-200 w-52 rounded">
@@ -64,7 +64,7 @@ const DesktopTopMenuBar = ({ isAuthenticated }) => {
                 </button>
               </div>
 
-              {isAuthenticated ? (
+              {user ? (
                 <button
                   onClick={() => {
                     dispatch(logout());
