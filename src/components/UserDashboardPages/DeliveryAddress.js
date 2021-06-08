@@ -5,8 +5,9 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import { Link, Switch, Route, useRouteMatch } from "react-router-dom";
 import UpdateAddress from "./UpdateAddress";
 
-const DeliveryAddress = ({ user }) => {
+const DeliveryAddress = () => {
   let { path, url } = useRouteMatch();
+  const user = JSON.parse(window.localStorage.getItem("user"));
 
   return (
     <div>
@@ -34,24 +35,22 @@ const DeliveryAddress = ({ user }) => {
                 <h1 className="my-1">
                   <i>
                     <AccountCircleOutlinedIcon fontSize="small" />
-                  </i>{" "}
-                  {/* {myName} */}
-                  {/* {localStorage.user.lastName} */}
+                  </i>
+                  {user ? user.firstName : ""} {user ? user.lastName : ""}
                 </h1>
                 <h1 className="my-1">
                   {" "}
                   <i>
                     <LocationOnIcon fontSize="small" />
                   </i>{" "}
-                  {/* {localStorage.user.street} {localStorage.user.city}{" "}
-                  {localStorage.user.lga}. */}
+                  {user.street} {user.city} {user.lga}.
                 </h1>
                 <h1 className="my-1">
                   {" "}
                   <i>
                     <PhoneIcon fontSize="small" />
                   </i>{" "}
-                  {/* {localStorage.user.phone} */}
+                  {user.phone}
                 </h1>
               </div>
             </div>
