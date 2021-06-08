@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import validate from "../../helper/validator";
 
-export const UpdateAccountInfo = () => {
+export const UpdateAddress = () => {
   const [values, setvalues] = useState({
     firstname: "",
-    emailaddress: "",
-    newpassword: "",
+    mobilenumber: "",
+    state: "",
     lastname: "",
-    currentpassword: "",
-    confirmpassword: "",
+    lga: "",
+    city: "",
+    direction: "",
+    streetaddress: "",
   });
 
   const [errors, setErrors] = useState({});
-  const user = JSON.parse(window.localStorage.getItem("user"));
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -30,7 +31,9 @@ export const UpdateAccountInfo = () => {
   return (
     <div>
       <div className="bg-white pt-4 h-full md:h-screen px-4 md:px-8 rounded text-primary-dark">
-        <h1 className="font-bold text-lg">Account Information</h1>
+        <h1 className="flex text-sm font-semibold py-2 items-center">
+          <p>My Account Information</p>
+        </h1>
         <div className="border-b  mt-3 mb-4 md:mb-8"></div>
         <div className="flex flex-col md:flex-row items-center">
           <div className="flex flex-col mr-0 md:mr-5">
@@ -43,39 +46,52 @@ export const UpdateAccountInfo = () => {
                 name="firstname"
                 value={values.firstname}
                 placeholder="Enter First Name"
-                className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
+                className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 h-10 md:h-12 w-72 md:w-96"
               />
               {errors.firstname && (
                 <p className="text-red-500 text-sm ">{errors.firstname}</p>
               )}
             </div>
-            <div className="flex flex-col mb-4 md:mb-8 ">
-              <label htmlFor="emailaddress">Email Address</label>
+            <div className="flex flex-col mb-4 md:mb-8">
+              <label htmlFor="mobilenumber">Mobile Number</label>
               <input
                 onChange={handleInput}
-                id="emailaddress"
-                type="email"
-                name="emailaddress"
-                value={values.emailaddress}
+                id="mobilenumber"
+                type="number"
+                name="mobilenumber"
+                value={values.mobilenumber}
                 placeholder="Enter Email Address"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.emailaddress && (
-                <p className="text-red-500 text-sm ">{errors.emailaddress}</p>
+              {errors.mobilenumber && (
+                <p className="text-red-500 text-sm ">{errors.mobilenumber}</p>
               )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8">
-              <label htmlFor="newpassword">New Password</label>
+              <label htmlFor="direction">Direction</label>
               <input
                 onChange={handleInput}
-                id="newpassword"
-                type="password"
-                name="newpassword"
-                value={values.newpassword}
+                id="direction"
+                type="text"
+                name="direction"
+                value={values.direction}
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.password && (
-                <p className="text-red-500 text-sm ">{errors.password}</p>
+            </div>
+
+            <div className="flex flex-col mb-4 md:mb-8">
+              <label htmlFor="State">State</label>
+              <select
+                className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
+                onChange={handleInput}
+                name="state"
+                value={values.state}
+              >
+                <option defaultValue>select</option>
+                <option value="Abuja">Abuja</option>
+              </select>
+              {errors.state && (
+                <p className="text-red-500 text-sm ">{errors.state}</p>
               )}
             </div>
           </div>
@@ -96,38 +112,58 @@ export const UpdateAccountInfo = () => {
               )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8">
-              <label htmlFor="currentpassword">Current Password</label>
+              <label htmlFor="city">City</label>
               <input
                 onChange={handleInput}
-                id="currentpassword"
-                type="password"
-                name="currentpassword"
-                value={values.currentpassword}
+                id="city"
+                type="text"
+                name="city"
+                value={values.city}
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.password && (
-                <p className="text-red-500 text-sm ">{errors.password}</p>
+              {errors.city && (
+                <p className="text-red-500 text-sm ">{errors.city}</p>
               )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8 ">
-              <label htmlFor="confirmpassword">Confirm Password</label>
+              <label htmlFor="streetaddress">Street Address</label>
               <input
                 onChange={handleInput}
-                id="confirmpassword"
-                type="password"
-                name="confirmpassword"
-                value={values.confirmpassword}
+                id="streetaddress"
+                type="text"
+                name="streetaddress"
+                value={values.streetaddress}
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.password && (
-                <p className="text-red-500 text-sm ">{errors.password}</p>
+              {errors.streetaddress && (
+                <p className="text-red-500 text-sm ">{errors.streetaddress}</p>
+              )}
+            </div>
+            <div className="flex flex-col mb-4 md:mb-8">
+              <label htmlFor="Lga">LGA</label>
+              <select
+                className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
+                onChange={handleInput}
+                name="lga"
+                value={values.lga}
+              >
+                <option defaultValue>select</option>
+                <option value="Abuja Municiple">Abuja Municiple</option>
+                <option value="Buari">Buari</option>
+                <option value="kuje">Kuje</option>
+                <option value="Gwagwalada">Gwagwalada</option>
+                <option value="kwali">kwali</option>
+                <option value="Abaji">Abaji</option>
+              </select>
+              {errors.lga && (
+                <p className="text-red-500 text-sm ">{errors.lga}</p>
               )}
             </div>
           </div>
         </div>
         <button
           onClick={handleSubmit}
-          className="bg-primary-dark mb-4 md:mb-0 py-2 px-10 focus:outline-none rounded text-white"
+          className="bg-primary-dark py-2 px-10 mb-4 rounded text-white focus:outline-none"
         >
           Save Changes
         </button>
@@ -136,4 +172,4 @@ export const UpdateAccountInfo = () => {
   );
 };
 
-export default UpdateAccountInfo;
+export default UpdateAddress;
