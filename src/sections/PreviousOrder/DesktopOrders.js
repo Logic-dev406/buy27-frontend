@@ -4,8 +4,6 @@ import { Link, Switch, Route } from "react-router-dom";
 import OrdersDetails from "../../components/OrderDetail/OrderDetails";
 
 const DesktopOrders = ({ path, url }) => {
-  console.log(path);
-
   return (
     <div>
       <Switch>

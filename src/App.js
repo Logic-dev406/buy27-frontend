@@ -16,6 +16,7 @@ import UserDashboard from "./pages/UsersDashboardControl";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ForgotPassword from "./pages/ForgotPassword";
+import CheckOut from "./pages/CheckOut";
 
 //Action
 import { addToCart } from "./redux/actions/cartAction";
@@ -52,7 +53,8 @@ const App = () => {
         <div>
           {history.location.pathname === "/signup" ||
           history.location.pathname === "/login" ||
-          history.location.pathname === "/forgotpassword" ? null : (
+          history.location.pathname === "/forgotpassword" ||
+          history.location.pathname === "/Checkout" ? null : (
             <Navbar
               cartItems={cartItems}
               isAuthenticated={isAuthenticated}
@@ -63,6 +65,7 @@ const App = () => {
           )}
           {history.location.pathname === "/signup" ||
           history.location.pathname === "/login" ||
+          history.location.pathname === "/Checkout" ||
           history.location.pathname === "/forgotpassword" ||
           isMobile ? null : (
             <Breadcrumbs />
@@ -115,6 +118,16 @@ const App = () => {
                 <Cart {...props} cartItems={cartItems} addToCart={addToCart} />
               )}
             />
+            <Route
+              path="/Checkout"
+              render={(props) => (
+                <CheckOut
+                  {...props}
+                  cartItems={cartItems}
+                  addToCart={addToCart}
+                />
+              )}
+            />
             <Route>
               {" "}
               <h1>This page does not exist</h1>{" "}
@@ -122,7 +135,8 @@ const App = () => {
           </Switch>
           {history.location.pathname === "/signup" ||
           history.location.pathname === "/login" ||
-          history.location.pathname === "/forgotpassword" ? null : (
+          history.location.pathname === "/forgotpassword" ||
+          history.location.pathname === "/Checkout" ? null : (
             <Footer className="fixed" />
           )}
         </div>
