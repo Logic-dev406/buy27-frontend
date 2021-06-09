@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import validate from "../../helper/validator";
 
-export const UpdateAddress = () => {
+export const AccountInformation = () => {
   const [values, setvalues] = useState({
     firstname: "",
     mobilenumber: "",
+    phone: "",
+    emailaddress: "",
     state: "",
     lastname: "",
     lga: "",
@@ -35,7 +37,7 @@ export const UpdateAddress = () => {
           <p>My Account Information</p>
         </h1>
         <div className="border-b  mt-3 mb-4 md:mb-8"></div>
-        <div className="flex flex-col md:flex-row items-center">
+        <div className="flex flex-col md:flex-row ">
           <div className="flex flex-col mr-0 md:mr-5">
             <div className="flex flex-col mb-4 md:mb-8">
               <label htmlFor="firstname">First Name</label>
@@ -52,6 +54,21 @@ export const UpdateAddress = () => {
                 <p className="text-red-500 text-sm ">{errors.firstname}</p>
               )}
             </div>
+            <div className="flex flex-col mb-4 md:mb-8 ">
+              <label htmlFor="emailaddress">Email Address</label>
+              <input
+                onChange={handleInput}
+                id="emailaddress"
+                type="email"
+                name="emailaddress"
+                value={values.emailaddress}
+                placeholder="Enter Email Address"
+                className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
+              />
+              {errors.emailaddress && (
+                <p className="text-red-500 text-sm ">{errors.emailaddress}</p>
+              )}
+            </div>
             <div className="flex flex-col mb-4 md:mb-8">
               <label htmlFor="mobilenumber">Mobile Number</label>
               <input
@@ -60,7 +77,7 @@ export const UpdateAddress = () => {
                 type="number"
                 name="mobilenumber"
                 value={values.mobilenumber}
-                placeholder="Enter Email Address"
+                placeholder="Enter Mobile Number"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
               {errors.mobilenumber && (
@@ -119,6 +136,7 @@ export const UpdateAddress = () => {
                 type="text"
                 name="city"
                 value={values.city}
+                placeholder="Enter City"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
               {errors.city && (
@@ -133,6 +151,7 @@ export const UpdateAddress = () => {
                 type="text"
                 name="streetaddress"
                 value={values.streetaddress}
+                placeholder="Enter Street Address"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
               {errors.streetaddress && (
@@ -172,4 +191,4 @@ export const UpdateAddress = () => {
   );
 };
 
-export default UpdateAddress;
+export default AccountInformation;
