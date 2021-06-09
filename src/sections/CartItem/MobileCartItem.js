@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CancelIcon from "@material-ui/icons/Cancel";
+import NumberFormat from "react-number-format";
 
 export const MobileCartItem = ({
   item,
@@ -33,12 +34,21 @@ export const MobileCartItem = ({
           </div>
           <div>
             <h1 className="font-bold text-lg text-primary-dark">
-              <span className="">&#8358;</span>
-              {item.price * item.qty}
+              <NumberFormat
+                value={item.price * item.qty}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={"₦"}
+              />
             </h1>
             <h1 className="text-xs text-gray-500 font-semibold">
-              <span className="">&#8358;</span>
-              {item.price} X {item.qty} {item.qty > 1 ? "items" : "item"}
+              <NumberFormat
+                value={item.price}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={"₦"}
+              />{" "}
+              X {item.qty} {item.qty > 1 ? "items" : "item"}
             </h1>
           </div>
         </div>
