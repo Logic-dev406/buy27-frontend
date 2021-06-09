@@ -15,7 +15,7 @@ import HomeWorkOutlinedIcon from "@material-ui/icons/HomeWorkOutlined";
 
 const MobileTopMenuBar = () => {
   const [active, setActive] = useState(false);
-  //   const user = JSON.parse(window.localStorage.getItem("user"));
+  const user = JSON.parse(window.localStorage.getItem("user"));
 
   return (
     <div className="flex items-center justify-between w-full h-6 bg-primary-dark text-white ">
@@ -32,41 +32,47 @@ const MobileTopMenuBar = () => {
           {active && (
             <div className="flex flex-col absolute text-primary-dark font-semibold w-full h-full bg-white py-2 text-sm">
               <div className=" flex flex-col justify-center px-4 items-start py-2 w-full bg-transparent">
-                <div className="flex">
-                  <div className=" flex justify-center items-center h-10 w-10 mr-4 rounded bg-primary-dark">
-                    <h1 className="text-white text-lg font-semibold">S</h1>
-                  </div>
+                {user ? (
                   <div>
-                    <h1 className="text-primary-dark font-bold text-sm ">
-                      Sunday Patrick
-                    </h1>
-                    <h2 className="text-primary-dark  ">
-                      sundaypatrick406@gmail.com
-                    </h2>
+                    <div className="flex">
+                      <div className=" flex justify-center items-center h-10 w-10 mr-4 rounded bg-primary-dark">
+                        <h1 className="text-white text-lg font-semibold">S</h1>
+                      </div>
+                      <div>
+                        <h1 className="text-primary-dark font-bold text-sm ">
+                          Sunday Patrick
+                        </h1>
+                        <h2 className="text-primary-dark  ">
+                          sundaypatrick406@gmail.com
+                        </h2>
+                      </div>
+                    </div>
+                    <Link className=" pt-4 " to="#">
+                      <h1 className="text-primary-dark text-xs font-semibold">
+                        ACCOUNT SETTINGS
+                      </h1>
+                    </Link>
                   </div>
-                </div>
-                <Link className=" mt-2 " to="#">
-                  <h1 className="text-primary-dark text-xs font-semibold">
-                    ACCOUNT SETTINGS
-                  </h1>
-                </Link>
+                ) : (
+                  <div className="flex justify-between my-4 mx-4">
+                    <a
+                      href="/login"
+                      className=" py-1 px-10 rounded bg-transparent border border-2 border-primary-dark text-primary-dark  "
+                    >
+                      Login
+                    </a>
+                    <a
+                      href="/signup"
+                      className=" py-1 px-10 rounded bg-transparent border border-2 border-primary-dark text-primary-dark  "
+                    >
+                      Signup
+                    </a>
+                  </div>
+                )}
               </div>
-              <div className="flex justify-between my-4 mx-4">
-                <a
-                  href="/login"
-                  className=" py-1 px-10 rounded bg-transparent border border-2 border-primary-dark text-primary-dark  "
-                >
-                  Login
-                </a>
-                <a
-                  href="/signup"
-                  className=" py-1 px-10 rounded bg-transparent border border-2 border-primary-dark text-primary-dark  "
-                >
-                  Signup
-                </a>
-              </div>
+
               <a
-                href="/Dashboard/My Account Info"
+                href="/Dashboard"
                 className=" flex px-4 pt-2 border-t border-gray-300"
               >
                 <AccountCircleOutlinedIcon />{" "}

@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 
 import { logout } from "../../redux/actions/authAction";
 
-const DesktopTopMenuBar = ({ isAuthenticated }) => {
+const DesktopTopMenuBar = () => {
   const [active, setActive] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
