@@ -8,6 +8,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import { useSelector, useDispatch } from "react-redux";
+import NumberFormat from "react-number-format";
 
 //Actions
 import { getProductDetails } from ".././redux/actions/productActions";
@@ -105,8 +106,12 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
                 </h1>
                 <div className="border-b my-5"></div>
                 <h1 className="text-2xl font-bold">
-                  <span className="mr-1">&#8358;</span>
-                  {product.price}
+                  <NumberFormat
+                    value={product.price}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"₦"}
+                  />
                 </h1>
                 <div className="border-b my-5"></div>
                 <div className="flex items-center justify-between">

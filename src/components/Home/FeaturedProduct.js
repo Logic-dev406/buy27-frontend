@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import NumberFormat from "react-number-format";
 
 //Action
 import { getFeaturedProducts as featuredProducts } from "../../redux/actions/productActions";
@@ -48,8 +49,12 @@ const FeaturedProduct = () => {
                 </h1>
 
                 <h5 className="text-left text-gray-500 text-xs pl-2 font-semibold">
-                  <span className="mr-1">&#8358;</span>
-                  {product.price}
+                  <NumberFormat
+                    value={product.price}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"₦"}
+                  />
                 </h5>
               </Link>
             ))
