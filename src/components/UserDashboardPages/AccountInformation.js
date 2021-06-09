@@ -27,7 +27,6 @@ export const AccountInformation = () => {
 
   const handleSubmit = () => {
     setErrors(validate(values));
-    console.log(values);
   };
 
   return (
