@@ -72,9 +72,12 @@ export const MobileCart = ({
                 <h1>Transctions are 100% safe and secure</h1>
               </div>
               <div className="px-5">
-                <h1 className="py-2 text-white bg-primary-dark rounded text-center font-semibold">
-                  Continue to Checkout
-                </h1>
+                <a
+                  href="/Checkout"
+                  className="flex items-center justify-center bg-primary-dark text-sm rounded text-white font-semibold h-10 w-full focus:outline-none"
+                >
+                  Proceed to Checkout
+                </a>
               </div>
             </div>
           </div>

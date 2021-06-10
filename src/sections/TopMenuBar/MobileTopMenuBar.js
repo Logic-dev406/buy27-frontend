@@ -112,16 +112,17 @@ const MobileTopMenuBar = () => {
                 <PhoneOutlinedIcon /> Contact Us
               </a>
               {user ? (
-                <button
-                  onClick={() => {
-                    dispatch(logout());
-                    window.location.reload(false);
-                    return setActive(!active);
-                  }}
-                  className="flex px-4 py-2 font-semibold"
-                >
-                  <ExitToAppOutlinedIcon /> Logout
-                </button>
+                <a href="/">
+                  <button
+                    onClick={() => {
+                      dispatch(logout());
+                      return setActive(!active);
+                    }}
+                    className="flex px-4 py-2 font-semibold"
+                  >
+                    <ExitToAppOutlinedIcon /> Logout
+                  </button>
+                </a>
               ) : null}
             </div>
           )}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CartItem from "../../components/Cart/CartItems";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import cart from "../../assets/icons/cart.png";
@@ -12,8 +12,6 @@ export const DesktopCart = ({
   getCartCount,
   cartItems,
 }) => {
-  const history = useHistory();
-
   return (
     <div>
       <div className="flex flex-col bg-gray-100 w-full">
@@ -103,15 +101,12 @@ export const DesktopCart = ({
                 </div>
                 <div className="border-b border-gray-200"></div>
                 <div className="flex flex-col px-3 my-5 items-center ">
-                  <button
-                    onClick={() => {
-                      history.push("/Checkout");
-                      window.location.reload(false);
-                    }}
-                    className="bg-primary-dark text-sm rounded text-white font-semibold h-10 w-full focus:outline-none"
+                  <a
+                    href="/Checkout"
+                    className="flex items-center justify-center bg-primary-dark text-sm rounded text-white font-semibold h-10 w-full focus:outline-none"
                   >
                     Proceed to Checkout
-                  </button>
+                  </a>
                 </div>
                 <div className="border-b border-gray-200"></div>
                 <div className="justify-between px-3 my-2 font-light text-sm text-gray-500">

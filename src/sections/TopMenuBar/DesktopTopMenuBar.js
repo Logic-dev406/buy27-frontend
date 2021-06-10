@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PhoneIcon from "@material-ui/icons/Phone";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
@@ -11,7 +11,6 @@ import { logout } from "../../redux/actions/authAction";
 
 const DesktopTopMenuBar = () => {
   const [active, setActive] = useState(false);
-  const history = useHistory();
   const dispatch = useDispatch();
   const user = JSON.parse(window.localStorage.getItem("user"));
 
@@ -44,59 +43,71 @@ const DesktopTopMenuBar = () => {
           {active && (
             <div className="bg-primary-dark flex flex-col  absolute border-t-2 border-grey-200 w-52 rounded">
               <div>
-                <button
-                  onClick={() => {
-                    history.push("/Dashboard");
-                    return setActive(!active);
-                  }}
-                  className="px-4 py-2 mt-3 flex items-center w-full focus:outline-none bg-transparent hover:bg-primary-light "
-                >
-                  <AccountCircleOutlinedIcon className="mr-2" /> My Profile
-                </button>
-                <button
-                  onClick={() => {
-                    history.push("/Dashboard/My Orders");
-                    return setActive(!active);
-                  }}
-                  className="px-4 py-2 mb-2 flex items-center w-full focus:outline-none bg-transparent hover:bg-primary-light "
-                >
-                  <ShoppingBasketOutlinedIcon className="mr-2" /> My Orders
-                </button>
+                <a href="/Dashboard">
+                  <button
+                    onClick={() => {
+                      return setActive(!active);
+                    }}
+                    className="px-4 py-2 mt-3 flex items-center w-full focus:outline-none bg-transparent hover:bg-primary-light "
+                  >
+                    <AccountCircleOutlinedIcon className="mr-2" /> My Profile
+                  </button>
+                </a>
+                <a href="/Dashboard/My Orders">
+                  <button
+                    onClick={() => {
+                      return setActive(!active);
+                    }}
+                    className="px-4 py-2 mb-2 flex items-center w-full focus:outline-none bg-transparent hover:bg-primary-light "
+                  >
+                    <ShoppingBasketOutlinedIcon className="mr-2" /> My Orders
+                  </button>
+                </a>
               </div>
 
               {user ? (
-                <button
-                  onClick={() => {
-                    dispatch(logout());
-                    window.location.reload(false);
-                    return setActive(!active);
-                  }}
-                  className=" self-auto border-t-2 border-secondary-dark focus:outline-none bg-transparent hover:bg-primary-light rounded py-3 text-sm font-normal"
+                <a
+                  href="/"
+                  className="flex justify-center self-auto rounded-b border-t-2 border-secondary-dark focus:outline-none bg-transparent hover:bg-primary-light py-3 text-sm font-normal"
                 >
-                  LOGOUT{" "}
-                </button>
+                  <button
+                    onClick={() => {
+                      dispatch(logout());
+                      return setActive(!active);
+                    }}
+                    className="focus:outline-none"
+                  >
+                    LOGOUT{" "}
+                  </button>
+                </a>
               ) : (
                 <div className="flex flex-col">
-                  <button
-                    onClick={() => {
-                      history.push("/login");
-                      window.location.reload(false);
-                      return setActive(!active);
-                    }}
-                    className=" self-auto border-t-2 border-secondary-dark focus:outline-none bg-transparent hover:bg-primary-light rounded py-3 text-sm font-normal"
+                  <a
+                    href="/login"
+                    className="flex justify-center self-auto border-t-2 border-secondary-dark focus:outline-none bg-transparent hover:bg-primary-light py-3 text-sm font-normal"
                   >
-                    LOGIN
-                  </button>
-                  <button
-                    onClick={() => {
-                      history.push("/signup");
-                      window.location.reload(false);
-                      return setActive(!active);
-                    }}
-                    className=" self-auto border-t-2 border-secondary-dark focus:outline-none bg-transparent hover:bg-primary-light rounded py-3 text-sm font-normal"
+                    <button
+                      onClick={() => {
+                        return setActive(!active);
+                      }}
+                      className="focus:outline-none"
+                    >
+                      LOGIN
+                    </button>
+                  </a>
+                  <a
+                    href="/signup"
+                    className="flex justify-center self-auto border-t-2 border-secondary-dark focus:outline-none bg-transparent hover:bg-primary-light rounded py-3 text-sm font-normal"
                   >
-                    SIGNUP
-                  </button>
+                    <button
+                      onClick={() => {
+                        return setActive(!active);
+                      }}
+                      className="focus:outline-none"
+                    >
+                      SIGNUP
+                    </button>
+                  </a>
                 </div>
               )}
             </div>
