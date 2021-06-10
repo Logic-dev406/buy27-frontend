@@ -76,16 +76,28 @@ const DesktopTopMenuBar = () => {
                   LOGOUT{" "}
                 </button>
               ) : (
-                <button
-                  onClick={() => {
-                    history.push("/login");
-                    window.location.reload(false);
-                    return setActive(!active);
-                  }}
-                  className=" self-auto border-t-2 border-secondary-dark focus:outline-none bg-transparent hover:bg-primary-light rounded py-3 text-sm font-normal"
-                >
-                  LOGIN
-                </button>
+                <div className="flex flex-col">
+                  <button
+                    onClick={() => {
+                      history.push("/login");
+                      window.location.reload(false);
+                      return setActive(!active);
+                    }}
+                    className=" self-auto border-t-2 border-secondary-dark focus:outline-none bg-transparent hover:bg-primary-light rounded py-3 text-sm font-normal"
+                  >
+                    LOGIN
+                  </button>
+                  <button
+                    onClick={() => {
+                      history.push("/signup");
+                      window.location.reload(false);
+                      return setActive(!active);
+                    }}
+                    className=" self-auto border-t-2 border-secondary-dark focus:outline-none bg-transparent hover:bg-primary-light rounded py-3 text-sm font-normal"
+                  >
+                    SIGNUP
+                  </button>
+                </div>
               )}
             </div>
           )}

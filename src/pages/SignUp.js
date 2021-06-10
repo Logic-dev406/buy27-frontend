@@ -120,7 +120,7 @@ const Register = ({ history }) => {
           </div>
           <input
             onChange={handleInput}
-            type="number"
+            type="tel"
             name="phone"
             value={values.phone}
             placeholder="Enter Phone Number"

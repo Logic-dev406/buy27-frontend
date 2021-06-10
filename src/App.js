@@ -53,8 +53,7 @@ const App = () => {
         <div>
           {history.location.pathname === "/signup" ||
           history.location.pathname === "/login" ||
-          history.location.pathname === "/forgotpassword" ||
-          history.location.pathname === "/Checkout" ? null : (
+          history.location.pathname === "/forgotpassword" ? null : (
             <Navbar
               cartItems={cartItems}
               isAuthenticated={isAuthenticated}
@@ -65,7 +64,6 @@ const App = () => {
           )}
           {history.location.pathname === "/signup" ||
           history.location.pathname === "/login" ||
-          history.location.pathname === "/Checkout" ||
           history.location.pathname === "/forgotpassword" ||
           isMobile ? null : (
             <Breadcrumbs />
@@ -135,8 +133,7 @@ const App = () => {
           </Switch>
           {history.location.pathname === "/signup" ||
           history.location.pathname === "/login" ||
-          history.location.pathname === "/forgotpassword" ||
-          history.location.pathname === "/Checkout" ? null : (
+          history.location.pathname === "/forgotpassword" ? null : (
             <Footer className="fixed" />
           )}
         </div>
