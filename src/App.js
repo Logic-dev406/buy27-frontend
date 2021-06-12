@@ -143,7 +143,6 @@ const App = () => {
                   getCartCount={getCartCount}
                   getCartTotalPrice={getCartTotalPrice}
                   cartItems={cartItems}
-                  addToCart={addToCart}
                 />
               )}
             />
@@ -152,6 +151,10 @@ const App = () => {
               render={(props) => (
                 <CheckOut
                   {...props}
+                  qtyChangeHandler={qtyChangeHandler}
+                  removeFromCartHandler={removeFromCartHandler}
+                  getCartCount={getCartCount}
+                  getCartTotalPrice={getCartTotalPrice}
                   cartItems={cartItems}
                   addToCart={addToCart}
                 />

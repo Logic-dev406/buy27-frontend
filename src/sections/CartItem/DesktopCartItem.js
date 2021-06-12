@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import NumberFormat from "react-number-format";
 
 export const DesktopCartItem = ({
@@ -10,12 +9,12 @@ export const DesktopCartItem = ({
   return (
     <div>
       <div className="flex justify-between px-5 py-6 w-full bg-white border-b">
-        <Link to={`/Shop/${item.slug}`} className="flex">
+        <a href={`/Shop/${item.slug}`} className="flex">
           <img src={item.image} alt="item" className="w-10 mr-4" />
           <h1 className="font-semibold text-primary-dart truncate">
             {item.name}
           </h1>
-        </Link>
+        </a>
         <div>
           <select
             onChange={(e) => qtyChangeHandler(item.slug, e.target.value)}
