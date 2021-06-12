@@ -57,7 +57,7 @@ export const AccountInformation = () => {
                 onChange={handleInput}
                 type="email"
                 name="emailaddress"
-                value={user ? user.email : null}
+                value={user ? user.email : ""}
                 placeholder="Enter Email Address"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />

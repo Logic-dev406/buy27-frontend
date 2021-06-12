@@ -18,14 +18,19 @@ import SignUp from "./pages/SignUp";
 import ForgotPassword from "./pages/ForgotPassword";
 import CheckOut from "./pages/CheckOut";
 
+import { useDispatch } from "react-redux";
+
 //Action
 import { addToCart } from "./redux/actions/cartAction";
 import { getSearchedProducts } from "./redux/actions/productActions";
+import { removeFromCart } from "./redux/actions/cartAction";
 
 const App = () => {
   const [isMobile, setisMobile] = useState(
     window.matchMedia("(max-width:768px)").matches
   );
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -46,6 +51,22 @@ const App = () => {
 
   const loaduser = useSelector((state) => state.auth);
   const { isAuthenticated } = loaduser;
+
+  const qtyChangeHandler = (slug, qty) => {
+    dispatch(addToCart(slug, qty));
+  };
+
+  const removeFromCartHandler = (slug) => {
+    dispatch(removeFromCart(slug));
+  };
+
+  const getCartCount = () => {
+    return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
+  };
+
+  const getCartTotalPrice = () => {
+    return cartItems.reduce((price, item) => item.price * item.qty + price, 0);
+  };
 
   return (
     <Router>
@@ -115,7 +136,15 @@ const App = () => {
             <Route
               path="/Cart"
               render={(props) => (
-                <Cart {...props} cartItems={cartItems} addToCart={addToCart} />
+                <Cart
+                  {...props}
+                  qtyChangeHandler={qtyChangeHandler}
+                  removeFromCartHandler={removeFromCartHandler}
+                  getCartCount={getCartCount}
+                  getCartTotalPrice={getCartTotalPrice}
+                  cartItems={cartItems}
+                  addToCart={addToCart}
+                />
               )}
             />
             <Route
