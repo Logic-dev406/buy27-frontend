@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import validate from "../../helper/validator";
 
@@ -7,6 +8,7 @@ import { UpdateProfile } from "../../redux/actions/authAction";
 export const UpdateAddress = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const [errors, setErrors] = useState({});
+  const history = useHistory();
 
   const [values, setvalues] = useState({
     firstName: user.firstName,
@@ -56,17 +58,18 @@ export const UpdateAddress = () => {
       direction: user.direction,
       street: user.street,
     });
+    history.push("/Dashboard/Delivery Address");
   };
 
   return (
     <div>
       <div className="bg-white pt-4 h-full md:h-screen px-4 md:px-8 rounded text-primary-dark">
-        <a
+        <Link
           className=" flex w-20 justify-center text-sm font-semibold bg-transparent hover:bg-primary-dark border border-primary-dark text-primary-dark hover:text-white rounded px-2 py-2 "
-          href="/Dashboard/Delivery Address"
+          to="/Dashboard/Delivery Address"
         >
           <h1>Cancel</h1>
-        </a>
+        </Link>
         <div className="border-b  mt-3 mb-4 md:mb-8"></div>
         <div className="flex flex-col md:flex-row items-center">
           <div className="flex flex-col mr-0 md:mr-5">

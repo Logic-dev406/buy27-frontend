@@ -2,7 +2,7 @@ import React from "react";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import PhoneIcon from "@material-ui/icons/Phone";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
+import { Switch, Route, useRouteMatch, Link } from "react-router-dom";
 import UpdateAddress from "./UpdateAddress";
 
 const DeliveryAddress = () => {
@@ -16,12 +16,12 @@ const DeliveryAddress = () => {
         <Route exact path={path}>
           <div className="bg-white h-screen pt-4 rounded">
             <div className="flex pl-4 md:pl-8 h-5 pb-5 ">
-              <a
-                href={`${url}/Edit`}
+              <Link
+                to={`${url}/Edit`}
                 className="flex text-sm font-semibold py-4 px-4 items-center rounded border border-primary-dark text-black hover:text-white bg-transparent hover:bg-primary-dark"
               >
                 <p>Update</p>
-              </a>
+              </Link>
             </div>
             <div className="border-b mb-4 mt-7 "></div>
             <div className="bg-transparent border h-40 md:w-96 mx-4 md:mx-8 rounded">
