@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-// import validate from "../../helper/validator";
+import validate from "../../helper/validator";
+import { useSelector, useDispatch } from "react-redux";
+
+import { UpdateProfile } from "../../redux/actions/authAction";
 
 export const AccountInformation = () => {
-  const [values, setvalues] = useState({
-    firstname: "",
-    mobilenumber: "",
-    phone: "",
-    emailaddress: "",
-    state: "",
-    lastname: "",
-    lga: "",
-    city: "",
-    direction: "",
-    streetaddress: "",
-  });
-
   const user = JSON.parse(localStorage.getItem("user"));
 
-  // const [errors, setErrors] = useState({});
+  const [values, setvalues] = useState({
+    firstName: user.firstName,
+    lastName: user.lastName,
+    currentPassword: "",
+    NewPassword: "",
+  });
+
+  const dispatch = useDispatch();
+  const loaduser = useSelector((state) => state.auth);
+  const { loading } = loaduser;
+
+  const [errors, setErrors] = useState({});
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -28,7 +29,17 @@ export const AccountInformation = () => {
   };
 
   const handleSubmit = () => {
-    // setErrors(validate(values));
+    setErrors(validate(values));
+    if (values.firstName.length === 0 || values.lastName.length === 0) {
+      return null;
+    }
+    dispatch(UpdateProfile(values));
+    setvalues({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      currentPassword: "",
+      NewPassword: "",
+    });
   };
 
   return (
@@ -45,63 +56,59 @@ export const AccountInformation = () => {
               <input
                 onChange={handleInput}
                 type="text"
-                name="firstname"
-                value={values.firstname}
+                name="firstName"
+                value={values.firstName}
                 placeholder="Enter First Name"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 h-10 md:h-12 w-72 md:w-96"
               />
+              {errors.firstName && (
+                <p className="text-red-500 text-sm ">{errors.firstName}</p>
+              )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8 ">
-              <label htmlFor="emailaddress">Email Address</label>
+              <label htmlFor="email">Email Address</label>
               <input
                 onChange={handleInput}
                 type="email"
-                name="emailaddress"
+                name="email"
                 value={user ? user.email : ""}
                 placeholder="Enter Email Address"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
             </div>
             <div className="flex flex-col mb-4 md:mb-8">
-              <label htmlFor="mobilenumber">New Password</label>
+              <label htmlFor="newPassword">New Password</label>
               <input
                 onChange={handleInput}
-                type="text"
-                name="newpassword"
-                value={values.mobilenumber}
+                type="password"
+                name="newPassword"
+                value={values.NewPassword}
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
             </div>
           </div>
           <div className="flex flex-col ml-0 md:ml-5">
             <div className="flex flex-col mb-4 md:mb-8">
-              <label htmlFor="lastname">Last Name</label>
+              <label htmlFor="lastName">Last Name</label>
               <input
                 onChange={handleInput}
                 type="text"
-                name="lastname"
-                value={values.lastname}
+                name="lastName"
+                value={values.lastName}
                 placeholder="Enter Last Name"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
+              {errors.lastName && (
+                <p className="text-red-500 text-sm ">{errors.lastName}</p>
+              )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8">
-              <label htmlFor="city">Current Password</label>
+              <label htmlFor="currentPassword">Current Password</label>
               <input
                 onChange={handleInput}
-                type="text"
+                type="password"
                 name="currentPassword"
-                value={values.city}
-                className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
-              />
-            </div>
-            <div className="flex flex-col mb-4 md:mb-8 ">
-              <label htmlFor="streetaddress">Confirm Password</label>
-              <input
-                onChange={handleInput}
-                type="text"
-                name="confrimPassword"
-                value={values.streetaddress}
+                value={values.currentPassword}
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
             </div>
@@ -111,7 +118,7 @@ export const AccountInformation = () => {
           onClick={handleSubmit}
           className="bg-primary-dark py-2 px-10 mb-4 rounded text-white focus:outline-none"
         >
-          Save Changes
+          {loading ? "Loading..." : "Save Changes"}
         </button>
       </div>
     </div>

@@ -38,9 +38,10 @@ export const authReducer = (state = { user: {} }, action) => {
         loading: true,
       };
     case actionTypes.UPDATE_PROFILE_SUCCESS:
+      localStorage.setItem("user", JSON.stringify(action.payload));
       return {
         loading: false,
-        data: action.payload,
+        user: action.payload,
       };
     case actionTypes.UPDATE_PROFILE_FAIL:
       return {
