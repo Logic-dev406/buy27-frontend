@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import buy27Logo from "./../assets/images/buy27logo.png";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import PhoneIcon from "@material-ui/icons/Phone";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import CartItem from "../components/Cart/CartItems";
 import NumberFormat from "react-number-format";
+import { useHistory } from "react-router";
 
 export const CheckOut = ({
   qtyChangeHandler,
@@ -13,7 +14,16 @@ export const CheckOut = ({
   getCartCount,
   getCartTotalPrice,
 }) => {
+  const history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
+
+  useEffect(() => {
+    if (user) {
+      return null;
+    } else {
+      history.push("/login");
+    }
+  }, [user, history]);
 
   return (
     <div className="flex flex-col px-52 bg-gray-100 overflow-y-auto h-screen w-full">
