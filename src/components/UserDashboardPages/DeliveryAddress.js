@@ -14,7 +14,7 @@ const DeliveryAddress = () => {
     <div>
       <Switch>
         <Route exact path={path}>
-          <div className="bg-white h-screen pt-4 rounded">
+          <div className=" bg-white h-screen pt-4 rounded">
             <div className="flex pl-4 md:pl-8 h-5 pb-5 ">
               <Link
                 to={`${url}/Edit`}
@@ -24,36 +24,38 @@ const DeliveryAddress = () => {
               </Link>
             </div>
             <div className="border-b mb-4 mt-7 "></div>
-            <div className="bg-transparent border h-40 md:w-96 mx-4 md:mx-8 rounded">
-              <div className="flex items-center justify-between px-4 py-2 text-sm font-semibold text-primary-dark ">
-                <div>
-                  <h1>Address</h1>
+            <div className="flex flex-col items-center">
+              <div className="bg-transparent w-full border h-40 md:w-96 mx-4 md:mx-8 rounded">
+                <div className="flex items-center justify-between px-4 py-2 text-sm font-semibold text-primary-dark ">
+                  <div>
+                    <h1>Address</h1>
+                  </div>
                 </div>
-              </div>
-              <div className="border-b  "></div>
+                <div className="border-b  "></div>
 
-              <div className="flex flex-col pt-4 px-4 text-primary-dark text-sm">
-                <h1 className="my-1">
-                  <i>
-                    <AccountCircleOutlinedIcon fontSize="small" />
-                  </i>{" "}
-                  {user ? user.firstName : ""} {user ? user.lastName : ""}
-                </h1>
-                <h1 className="my-1">
-                  {" "}
-                  <i>
-                    <LocationOnIcon fontSize="small" />
-                  </i>{" "}
-                  {user ? user.street : ""} {user ? user.city : ""}{" "}
-                  {user ? user.lga : ""}.
-                </h1>
-                <h1 className="my-1">
-                  {" "}
-                  <i>
-                    <PhoneIcon fontSize="small" />
-                  </i>{" "}
-                  {user ? user.phone : ""}
-                </h1>
+                <div className="flex flex-col pt-4 px-4 text-primary-dark text-sm">
+                  <h1 className="my-1">
+                    <i>
+                      <AccountCircleOutlinedIcon fontSize="small" />
+                    </i>{" "}
+                    {user ? user.firstName : ""} {user ? user.lastName : ""}
+                  </h1>
+                  <h1 className="my-1">
+                    {" "}
+                    <i>
+                      <LocationOnIcon fontSize="small" />
+                    </i>{" "}
+                    {user ? user.street : ""}, {user ? user.lga : ""},{" "}
+                    {user ? user.city : ""}.
+                  </h1>
+                  <h1 className="my-1">
+                    {" "}
+                    <i>
+                      <PhoneIcon fontSize="small" />
+                    </i>{" "}
+                    {user ? user.phone : ""}
+                  </h1>
+                </div>
               </div>
             </div>
           </div>
