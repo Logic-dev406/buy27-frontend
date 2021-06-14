@@ -33,6 +33,20 @@ export const authReducer = (state = { user: {} }, action) => {
         isAuthenticated: true,
         user: action.payload,
       };
+    case actionTypes.UPDATE_PROFILE_REQUEST:
+      return {
+        loading: true,
+      };
+    case actionTypes.UPDATE_PROFILE_SUCCESS:
+      return {
+        loading: false,
+        data: action.payload,
+      };
+    case actionTypes.UPDATE_PROFILE_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
     case actionTypes.LOGOUT:
     case actionTypes.USER_FAIL:
     case actionTypes.LOGIN_FAIL:

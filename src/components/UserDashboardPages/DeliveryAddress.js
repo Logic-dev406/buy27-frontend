@@ -15,7 +15,7 @@ const DeliveryAddress = () => {
       <Switch>
         <Route exact path={path}>
           <div className="bg-white h-screen pt-4 rounded">
-            <div className="flex pl-8 h-5 pb-5 ">
+            <div className="flex pl-4 md:pl-8 h-5 pb-5 ">
               <Link
                 to={`${url}/Edit`}
                 className="flex text-sm font-semibold py-4 px-4 items-center rounded border border-primary-dark text-black hover:text-white bg-transparent hover:bg-primary-dark"
@@ -44,14 +44,15 @@ const DeliveryAddress = () => {
                   <i>
                     <LocationOnIcon fontSize="small" />
                   </i>{" "}
-                  {user.street} {user.city} {user.lga}.
+                  {user ? user.street : ""} {user ? user.city : ""}{" "}
+                  {user ? user.lga : ""}.
                 </h1>
                 <h1 className="my-1">
                   {" "}
                   <i>
                     <PhoneIcon fontSize="small" />
                   </i>{" "}
-                  {user.phone}
+                  {user ? user.phone : ""}
                 </h1>
               </div>
             </div>

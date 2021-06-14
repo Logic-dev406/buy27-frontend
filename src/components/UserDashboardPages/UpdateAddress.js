@@ -1,20 +1,28 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import validate from "../../helper/validator";
 
+import { UpdateProfile } from "../../redux/actions/authAction";
+
 export const UpdateAddress = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const [errors, setErrors] = useState({});
+
   const [values, setvalues] = useState({
-    firstname: "",
-    mobilenumber: "",
-    state: "",
-    lastname: "",
-    lga: "",
-    city: "",
-    direction: "",
-    streetaddress: "",
+    firstName: user.firstName,
+    phone: user.phone,
+    state: user.state,
+    lastName: user.lastName,
+    lga: user.lga,
+    city: user.city,
+    direction: user.direction,
+    street: user.street,
   });
 
-  const [errors, setErrors] = useState({});
+  const dispatch = useDispatch();
+
+  const loaduser = useSelector((state) => state.auth);
+  const { loading } = loaduser;
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -24,58 +32,76 @@ export const UpdateAddress = () => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     setErrors(validate(values));
-    console.log(values);
+    if (
+      values.firstName.length === 0 ||
+      values.phone.length === 0 ||
+      values.state.length === 0 ||
+      values.lastName.length === 0 ||
+      values.lga.length === 0 ||
+      values.city.length === 0 ||
+      values.street.length === 0
+    ) {
+      return null;
+    }
+    dispatch(UpdateProfile(values));
+    setvalues({
+      firstName: user.firstName,
+      phone: user.phone,
+      state: user.state,
+      lastName: user.lastName,
+      lga: user.lga,
+      city: user.city,
+      direction: user.direction,
+      street: user.street,
+    });
   };
 
   return (
     <div>
       <div className="bg-white pt-4 h-full md:h-screen px-4 md:px-8 rounded text-primary-dark">
-        <Link
+        <a
           className=" flex w-20 justify-center text-sm font-semibold bg-transparent hover:bg-primary-dark border border-primary-dark text-primary-dark hover:text-white rounded px-2 py-2 "
-          to="/Dashboard/Delivery Address"
+          href="/Dashboard/Delivery Address"
         >
           <h1>Cancel</h1>
-        </Link>
+        </a>
         <div className="border-b  mt-3 mb-4 md:mb-8"></div>
         <div className="flex flex-col md:flex-row items-center">
           <div className="flex flex-col mr-0 md:mr-5">
             <div className="flex flex-col mb-4 md:mb-8">
-              <label htmlFor="firstname">First Name</label>
+              <label htmlFor="firstName">First Name</label>
               <input
                 onChange={handleInput}
-                id="firstname"
                 type="text"
-                name="firstname"
-                value={values.firstname}
+                name="firstName"
+                value={values.firstName}
                 placeholder="Enter First Name"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.firstname && (
-                <p className="text-red-500 text-sm ">{errors.firstname}</p>
+              {errors.firstName && (
+                <p className="text-red-500 text-sm ">{errors.firstName}</p>
               )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8">
-              <label htmlFor="mobilenumber">Mobile Number</label>
+              <label htmlFor="phone">Mobile Number</label>
               <input
                 onChange={handleInput}
-                id="mobilenumber"
                 type="number"
-                name="mobilenumber"
-                value={values.mobilenumber}
-                placeholder="Enter Email Address"
+                name="phone"
+                value={values.phone}
+                placeholder="Enter Phone Number"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.mobilenumber && (
-                <p className="text-red-500 text-sm ">{errors.mobilenumber}</p>
+              {errors.phone && (
+                <p className="text-red-500 text-sm ">{errors.phone}</p>
               )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8">
-              <label htmlFor="direction">Direction</label>
+              <label htmlFor="direction">Direction (Optional)</label>
               <input
                 onChange={handleInput}
-                id="direction"
                 type="text"
                 name="direction"
                 value={values.direction}
@@ -94,32 +120,30 @@ export const UpdateAddress = () => {
                 <option defaultValue>select</option>
                 <option value="Abuja">Abuja</option>
               </select>
-              {errors.state && (
-                <p className="text-red-500 text-sm ">{errors.state}</p>
+              {errors.State && (
+                <p className="text-red-500 text-sm ">{errors.State}</p>
               )}
             </div>
           </div>
           <div className="flex flex-col ml-0 md:ml-5">
             <div className="flex flex-col mb-4 md:mb-8">
-              <label htmlFor="lastname">Last Name</label>
+              <label htmlFor="lastName">Last Name</label>
               <input
                 onChange={handleInput}
-                id="lastname"
                 type="text"
-                name="lastname"
-                value={values.lastname}
+                name="lastName"
+                value={values.lastName}
                 placeholder="Enter Last Name"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.lastname && (
-                <p className="text-red-500 text-sm ">{errors.lastname}</p>
+              {errors.lastName && (
+                <p className="text-red-500 text-sm ">{errors.lastName}</p>
               )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8">
               <label htmlFor="city">City</label>
               <input
                 onChange={handleInput}
-                id="city"
                 type="text"
                 name="city"
                 value={values.city}
@@ -130,17 +154,16 @@ export const UpdateAddress = () => {
               )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8 ">
-              <label htmlFor="streetaddress">Street Address</label>
+              <label htmlFor="street">Street Address</label>
               <input
                 onChange={handleInput}
-                id="streetaddress"
                 type="text"
-                name="streetaddress"
-                value={values.streetaddress}
+                name="street"
+                value={values.street}
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
-              {errors.streetaddress && (
-                <p className="text-red-500 text-sm ">{errors.streetaddress}</p>
+              {errors.street && (
+                <p className="text-red-500 text-sm ">{errors.street}</p>
               )}
             </div>
             <div className="flex flex-col mb-4 md:mb-8">
@@ -169,7 +192,7 @@ export const UpdateAddress = () => {
           onClick={handleSubmit}
           className="bg-primary-dark py-2 px-10 mb-4 rounded text-white focus:outline-none"
         >
-          Save Changes
+          {loading ? "Loading..." : "Save Changes"}
         </button>
       </div>
     </div>

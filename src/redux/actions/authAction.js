@@ -74,6 +74,33 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
+export const UpdateProfile = (formData) => async (dispatch) => {
+  try {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    dispatch({ type: actionTypes.UPDATE_PROFILE_REQUEST });
+
+    const { data } = await axios.put(
+      "https://backend.buy27.ng/api/users/update",
+      formData
+    );
+
+    dispatch({
+      type: actionTypes.UPDATE_PROFILE_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.UPDATE_PROFILE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
 export const logout = () => async (dispatch) => {
   dispatch({ type: actionTypes.LOGOUT });
 };
