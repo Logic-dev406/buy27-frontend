@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import buy27Logo from "./../assets/images/buy27logo.png";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import PhoneIcon from "@material-ui/icons/Phone";
@@ -14,6 +14,16 @@ export const CheckOut = ({
   getCartCount,
   getCartTotalPrice,
 }) => {
+  const [isMobile, setisMobile] = useState(
+    window.matchMedia("(max-width:768px)").matches
+  );
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setisMobile(window.matchMedia("(max-width:768px)").matches);
+    });
+  });
+
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -26,21 +36,21 @@ export const CheckOut = ({
   }, [user, history]);
 
   return (
-    <div className="flex flex-col px-52 bg-gray-100 overflow-y-auto h-screen w-full">
-      <div className="flex items-center justify-between  pt-8 pb-14">
+    <div className="flex flex-col px-0 pb-5 md:pb-10 md:px-52 bg-gray-100 overflow-y-auto h-screen w-full">
+      <div className="flex items-center justify-between px-4 md:px-0 pt-3 md:pt-8 pb-3 md:pb-10">
         <a href="/">
-          <img className="w-40" src={buy27Logo} alt="logo" />
+          <img className="w-14 md:w-40" src={buy27Logo} alt="logo" />
         </a>
-        <p className="text-3xl font-bold">Checkout</p>
+        <p className="text-normal md:text-3xl font-bold">Checkout</p>
         <p></p>
       </div>
-      <div className="flex pb-10">
+      <div className="flex flex-col md:flex-row ">
         <div className="w-full">
           <div className=" pb-10  px-5 bg-white rounded">
-            <h1 className="py-4 mb-4 border-b border-gray-200 text font-semibold ">
+            <h1 className="py-4 mb-4 border-b border-gray-200  font-semibold ">
               Delivery / Pickup Address
             </h1>
-            <div className="h-44 w-96 bg-transparent border border-primary-dark text-sm rounded ">
+            <div className="h-44 w-full bg-transparent border border-primary-dark text-sm rounded ">
               <div className=" flex items-center justify-between py-2 px-4 mb-3 border-b border-primary-dark">
                 <p>Deliver to me</p>
                 <a href="/Dashboard/Delivery Address/Edit">
@@ -72,17 +82,19 @@ export const CheckOut = ({
               </h1>
             </div>
           </div>
-          <div className=" w-full mt-4 bg-white rounded ">
-            <h1 className="pt-5 px-5 mb-4  text font-semibold ">
+          <div className=" w-full my-4 rounded ">
+            <h1 className="py-5 px-5 mb-4 md:mb-0 bg-white font-semibold ">
               Review Order
             </h1>
-            <div className=" w-full bg-transparent mr-8">
-              <div className="flex items-center justify-between text-white font-semibold bg-primary-dark h-10 w-full px-5">
-                <h1>Item Details</h1>
-                <h1>Quantity</h1>
-                <h1>Item Price</h1>
-                <h1>Action</h1>
-              </div>
+            <div className=" w-full px-4 md:px-0 bg-transparent ">
+              {isMobile ? null : (
+                <div className="flex items-center justify-between text-white font-semibold bg-primary-dark h-10 w-full px-5">
+                  <h1>Item Details</h1>
+                  <h1>Quantity</h1>
+                  <h1>Item Price</h1>
+                  <h1>Action</h1>
+                </div>
+              )}
               {cartItems.map((item) => {
                 return (
                   <CartItem
@@ -96,7 +108,7 @@ export const CheckOut = ({
             </div>
           </div>
         </div>
-        <div className="h-96 w-96 ml-5 bg-white rounded ">
+        <div className="h-96 w-full md:w-96 ml-0 md:ml-5 bg-white rounded ">
           <h1 className="px-3 my-2 font-bold">Payment Options </h1>
           <div className="border-b border-gray-200"></div>
           <div className="flex justify-between px-3 my-2 text-sm">
