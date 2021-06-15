@@ -6,12 +6,12 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import CartItem from "../components/Cart/CartItems";
 import NumberFormat from "react-number-format";
 import { useHistory } from "react-router";
+import { PaystackButton } from "react-paystack";
 
 export const CheckOut = ({
   qtyChangeHandler,
   removeFromCartHandler,
   cartItems,
-  getCartCount,
   getCartTotalPrice,
 }) => {
   const [isMobile, setisMobile] = useState(
@@ -34,6 +34,27 @@ export const CheckOut = ({
       history.push("/login");
     }
   }, [user, history]);
+
+  const publicKey = "pk_test_8d501ba4afd7f76a3e2fea6df99e223ac8739705";
+  // const [reference, setReference] = useState(new Date().getTime());
+
+  const paystackSuccessAction = async (res) => {
+    // setReference(new Date().getTime());
+  };
+
+  // you can call this function anything
+  const paystackCloseAction = () => {
+    // setReference(new Date().getTime());
+  };
+
+  const componentProps = {
+    email: user.email,
+    amount: getCartTotalPrice() * 100,
+    publicKey,
+    text: "Proceed to Payment",
+    onSuccess: (res) => paystackSuccessAction(res),
+    onClose: paystackCloseAction(),
+  };
 
   return (
     <div className="flex flex-col px-0 pb-5 md:pb-10 md:px-52 bg-gray-100 overflow-y-auto h-screen w-full">
@@ -143,12 +164,10 @@ export const CheckOut = ({
           </div>
           <div className="border-b border-gray-200"></div>
           <div className="flex flex-col px-3 my-5 items-center ">
-            <a
-              href="/Checkout"
+            <PaystackButton
               className="flex items-center justify-center bg-primary-dark text-sm rounded text-white font-semibold h-10 w-full focus:outline-none"
-            >
-              Proceed to Payment
-            </a>
+              {...componentProps}
+            />
           </div>
           <div className="border-b border-gray-200"></div>
           <div className="justify-between px-3 my-2 font-light text-sm text-gray-500">
