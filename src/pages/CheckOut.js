@@ -60,14 +60,15 @@ export const CheckOut = ({
                 <i>
                   <LocationOnIcon fontSize="small" />
                 </i>{" "}
-                {user.street} {user.city} {user.lga}.
+                {user ? user.street : ""} {user ? user.city : ""}{" "}
+                {user ? user.lga : ""}.
               </h1>
               <h1 className="my-1 px-4 py-1">
                 {" "}
                 <i>
                   <PhoneIcon fontSize="small" />
                 </i>{" "}
-                {user.phone}
+                {user ? user.phone : ""}
               </h1>
             </div>
           </div>

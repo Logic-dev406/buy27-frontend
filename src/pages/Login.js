@@ -25,14 +25,15 @@ export const SignIn = () => {
 
   const login = useSelector((state) => state.auth);
   const { loading, error, isAuthenticated } = login;
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (isAuthenticated || localStorage.token) {
-      history.push("/Dashboard");
+    if (isAuthenticated || token) {
+      history.push("/");
     } else {
       return null;
     }
-  }, [history, isAuthenticated]);
+  }, [history, isAuthenticated, token]);
 
   const handleInput = (e) => {
     const { name, value } = e.target;

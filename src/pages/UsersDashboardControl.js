@@ -14,9 +14,6 @@ import {
 } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-//Actions
-import { loadUser } from ".././redux/actions/authAction";
-
 export const UsersDashboardControl = () => {
   const [isMobile, setisMobile] = useState(
     window.matchMedia("(max-width:768px)").matches
@@ -34,7 +31,7 @@ export const UsersDashboardControl = () => {
 
   useEffect(() => {
     if (token) {
-      dispatch(loadUser());
+      return null;
     } else {
       history.push("/login");
     }

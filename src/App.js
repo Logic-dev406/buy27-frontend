@@ -24,6 +24,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "./redux/actions/cartAction";
 import { getSearchedProducts } from "./redux/actions/productActions";
 import { removeFromCart } from "./redux/actions/cartAction";
+import { loadUser } from "./redux/actions/authAction";
 
 const App = () => {
   const [isMobile, setisMobile] = useState(
@@ -37,6 +38,16 @@ const App = () => {
       setisMobile(window.matchMedia("(max-width:768px)").matches);
     });
   });
+
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (token) {
+      return dispatch(loadUser());
+    } else {
+      return null;
+    }
+  }, [dispatch, token]);
 
   const [qty, setQty] = useState(1);
   const history = createBrowserHistory();
