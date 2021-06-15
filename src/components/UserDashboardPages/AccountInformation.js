@@ -8,8 +8,8 @@ export const AccountInformation = () => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   const [values, setvalues] = useState({
-    firstName: user.firstName,
-    lastName: user.lastName,
+    firstName: user ? user.firstName : "",
+    lastName: user ? user.lastName : "",
     currentPassword: "",
     NewPassword: "",
   });
@@ -35,8 +35,8 @@ export const AccountInformation = () => {
     }
     dispatch(UpdateProfile(values));
     setvalues({
-      firstName: user.firstName,
-      lastName: user.lastName,
+      firstName: user ? user.firstName : "",
+      lastName: user ? user.lastName : "",
       currentPassword: "",
       NewPassword: "",
     });
@@ -57,7 +57,7 @@ export const AccountInformation = () => {
                 onChange={handleInput}
                 type="text"
                 name="firstName"
-                value={values.firstName}
+                value={user ? values.firstName : ""}
                 placeholder="Enter First Name"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 h-10 md:h-12 w-72 md:w-96"
               />
@@ -94,7 +94,7 @@ export const AccountInformation = () => {
                 onChange={handleInput}
                 type="text"
                 name="lastName"
-                value={values.lastName}
+                value={user ? values.lastName : ""}
                 placeholder="Enter Last Name"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />

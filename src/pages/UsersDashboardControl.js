@@ -30,14 +30,15 @@ export const UsersDashboardControl = () => {
 
   const history = useHistory();
   const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (localStorage.token) {
+    if (token) {
       dispatch(loadUser());
     } else {
       history.push("/login");
     }
-  }, [history, dispatch]);
+  }, [history, dispatch, token]);
 
   let { path, url } = useRouteMatch();
 
