@@ -1,9 +1,11 @@
 import * as actionTypes from "../constants/cartConstants";
 import axios from "axios";
 
+const paystackConfig = require("../../config/config");
+
 export const addToCart = (slug, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(
-    `https://backend.buy27.ng/api/products/${slug}`
+    `${paystackConfig.LiveBackendUrl}/api/products/${slug}`
   );
 
   dispatch({
