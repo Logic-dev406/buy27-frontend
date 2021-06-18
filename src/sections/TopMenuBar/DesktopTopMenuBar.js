@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { Link } from "react-router-dom";
 import PhoneIcon from "@material-ui/icons/Phone";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
@@ -31,7 +31,7 @@ const DesktopTopMenuBar = () => {
         </a>
       </div>
       <div className="">
-        <>
+        <Fragment>
           <button
             className="px-2 border-l-2 border-r-2 border-primary-light focus:outline-none"
             onClick={() => {
@@ -121,7 +121,7 @@ const DesktopTopMenuBar = () => {
           <Link className="px-2 border-r-2 border-primary-light" to="/About">
             About Us
           </Link>
-        </>
+        </Fragment>
       </div>
     </div>
   );

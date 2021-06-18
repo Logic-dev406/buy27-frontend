@@ -8,7 +8,7 @@ import NumberFormat from "react-number-format";
 import { useHistory } from "react-router";
 import { PaystackButton } from "react-paystack";
 
-const paystackConfig = require("../config/config").paystack;
+// const paystackConfig = require("../config/config").paystack;
 
 export const CheckOut = ({
   qtyChangeHandler,
@@ -37,7 +37,8 @@ export const CheckOut = ({
     }
   }, [user, history]);
 
-  const publicKey = paystackConfig.publicKey;
+  const publicKey = "pk_test_8d501ba4afd7f76a3e2fea6df99e223ac8739705";
+  // console.log(paystackConfig.publicKey);
   // const [reference, setReference] = useState(new Date().getTime());
 
   const paystackSuccessAction = async (res) => {
@@ -50,7 +51,7 @@ export const CheckOut = ({
   };
 
   const componentProps = {
-    email: user.email,
+    email: user ? user.email : "",
     amount: getCartTotalPrice() * 100,
     publicKey,
     text: "Proceed to Payment",

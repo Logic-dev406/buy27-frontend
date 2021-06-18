@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 // import FavoriteIcon from '@material-ui/icons/Favorite';
 import StorefrontIcon from "@material-ui/icons/Storefront";
 import EmojiTransportationIcon from "@material-ui/icons/EmojiTransportation";
@@ -64,7 +64,7 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
       ) : error ? (
         <h1>{error}</h1>
       ) : (
-        <>
+        <Fragment>
           <div className="flex flex-col items-center bg-gray-100 h-full w-full">
             <div className="flex md:flex-row flex-col items-center justify-center md:justify-between mx-0 md:mx-4 w-full md:w-9/12 bg-white my-8">
               <div key={product.id}>
@@ -203,7 +203,7 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
               </div>
             </div>
           </div>
-        </>
+        </Fragment>
       )}
     </div>
   );

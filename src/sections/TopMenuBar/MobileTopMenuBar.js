@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import MenuIcon from "@material-ui/icons/Menu";
 // import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
@@ -25,7 +25,7 @@ const MobileTopMenuBar = () => {
   return (
     <div className="flex items-center justify-between w-full h-6 bg-primary-dark text-white ">
       <div>
-        <>
+        <Fragment>
           <button
             className=" border-primary-light focus:outline-none"
             onClick={() => {
@@ -126,7 +126,7 @@ const MobileTopMenuBar = () => {
               ) : null}
             </div>
           )}
-        </>
+        </Fragment>
       </div>
       <div>
         <TwitterIcon className="text-white px-1" />
