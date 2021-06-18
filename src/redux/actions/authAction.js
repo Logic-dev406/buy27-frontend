@@ -2,12 +2,14 @@ import * as actionTypes from "../constants/authConstants";
 import setAuthToken from "../../helper/setAuthToken";
 import axios from "axios";
 
+const paystackConfig = require("../../config/config");
+
 export const signUp = (formData) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.SIGNUP_REQUEST });
 
     const { data } = await axios.post(
-      "https://backend.buy27.ng/api/users/register",
+      `${paystackConfig.LiveBackendUrl}/api/users/register`,
       formData
     );
 
@@ -31,7 +33,7 @@ export const login = (formData) => async (dispatch) => {
     dispatch({ type: actionTypes.LOGIN_REQUEST });
 
     const { data } = await axios.post(
-      "https://backend.buy27.ng/api/users/login",
+      `${paystackConfig.LiveBackendUrl}/api/users/login`,
       formData
     );
 
@@ -57,7 +59,9 @@ export const loadUser = () => async (dispatch) => {
     }
     dispatch({ type: actionTypes.USER_REQUEST });
 
-    const { data } = await axios.get("https://backend.buy27.ng/api/users/me");
+    const { data } = await axios.get(
+      `${paystackConfig.LiveBackendUrl}/api/users/me`
+    );
 
     dispatch({
       type: actionTypes.USER_LOADED,
@@ -82,7 +86,7 @@ export const UpdateProfile = (formData) => async (dispatch) => {
     dispatch({ type: actionTypes.UPDATE_PROFILE_REQUEST });
 
     const { data } = await axios.put(
-      "https://backend.buy27.ng/api/users/update",
+      `${paystackConfig.LiveBackendUrl}/api/users/update`,
       formData
     );
 
