@@ -3,6 +3,6 @@ module.exports = {
   LocalBackendUrl: process.env.REACT_APP_LOCAL_BACKEND_URL,
 
   paystack: {
-    publicKey: process.env.PAYSTACK_TEST_PUBLIC_KEY,
+    publicKey: process.env.REACT_APP_PAYSTACK_TEST_PUBLIC_KEY,
   },
 };
