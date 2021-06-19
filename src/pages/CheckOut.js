@@ -41,6 +41,8 @@ export const CheckOut = ({
 
   const paystackSuccessAction = async (res) => {
     // setReference(new Date().getTime());
+    window.localStorage.removeItem("cart");
+    history.push("/");
   };
 
   // you can call this function anything
