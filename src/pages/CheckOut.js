@@ -7,6 +7,7 @@ import CartItem from "../components/Cart/CartItems";
 import NumberFormat from "react-number-format";
 import { useHistory } from "react-router";
 import { PaystackButton } from "react-paystack";
+// import { Redirect } from "react-router-dom";
 
 const paystackConfig = require("../config/config").paystack;
 
@@ -15,6 +16,7 @@ export const CheckOut = ({
   removeFromCartHandler,
   cartItems,
   getCartTotalPrice,
+  getCartCount,
 }) => {
   const [isMobile, setisMobile] = useState(
     window.matchMedia("(max-width:768px)").matches
@@ -58,6 +60,10 @@ export const CheckOut = ({
     onSuccess: (res) => paystackSuccessAction(res),
     onClose: paystackCloseAction(),
   };
+
+  if (getCartCount() === 0) {
+    return history.push("/");
+  }
 
   return (
     <div className="flex flex-col px-0 pb-5 md:pb-10 md:px-52 bg-gray-100 overflow-y-auto h-screen w-full">

@@ -8,11 +8,11 @@ const Banner = () => {
   return (
     <div>
       <div className="flex flex-col md:flex-row justify-center items-center my-4 md:my-8">
-        <div className=" flex items-center overflow-hidden rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center h-56 md:h-96 w-full md:w-2/5">
+        <div className=" flex items-center overflow-hidden rounded-none md:rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center h-56 md:h-96 w-full md:w-2/5">
           <img
             src={banner}
             alt="banner"
-            className=" w-full h-full  md:rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
+            className=" w-full h-full rounded-none md:rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
           />
         </div>
         <div className="flex grid grid-cols-2 gap-y-4 md:gap-y-8 gap-x-4 md:gap-x-12 mt-4 md:mt-0 ">
