@@ -7,7 +7,6 @@ import CartItem from "../components/Cart/CartItems";
 import NumberFormat from "react-number-format";
 import { useHistory } from "react-router";
 import { PaystackButton } from "react-paystack";
-// import { Redirect } from "react-router-dom";
 
 const paystackConfig = require("../config/config").paystack;
 
