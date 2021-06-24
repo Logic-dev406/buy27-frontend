@@ -1,45 +1,45 @@
-import React, { useState, useEffect } from "react";
-import Home from "./pages/Home";
-import Shop from "./pages/Shop";
-import About from "./pages/About";
-import ContactUs from "./pages/ContactUs";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ProductDetail from "./pages/ProductDetail";
-import Cart from "./pages/Cart";
-import Search from "./pages/Search";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { createBrowserHistory } from "history";
-import { useSelector } from "react-redux";
-import Breadcrumbs from "./components/Breadcrumbs";
-import UserDashboard from "./pages/UsersDashboardControl";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import ForgotPassword from "./pages/ForgotPassword";
-import CheckOut from "./pages/CheckOut";
+import React, { useState, useEffect } from 'react';
+import Home from './pages/Home';
+import Shop from './pages/Shop';
+import About from './pages/About';
+import ContactUs from './pages/ContactUs';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import ProductDetail from './pages/ProductDetail';
+import Cart from './pages/Cart';
+import Search from './pages/Search';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { useSelector } from 'react-redux';
+import Breadcrumbs from './components/Breadcrumbs';
+import UserDashboard from './pages/UsersDashboardControl';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import ForgotPassword from './pages/ForgotPassword';
+import CheckOut from './pages/CheckOut';
 
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 
 //Action
-import { addToCart } from "./redux/actions/cartAction";
-import { getSearchedProducts } from "./redux/actions/productActions";
-import { removeFromCart } from "./redux/actions/cartAction";
-import { loadUser } from "./redux/actions/authAction";
+import { addToCart } from './redux/actions/cartAction';
+import { getSearchedProducts } from './redux/actions/productActions';
+import { removeFromCart } from './redux/actions/cartAction';
+import { loadUser } from './redux/actions/authAction';
 
 const App = () => {
   const [isMobile, setisMobile] = useState(
-    window.matchMedia("(max-width:768px)").matches
+    window.matchMedia('(max-width:768px)').matches
   );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      setisMobile(window.matchMedia("(max-width:768px)").matches);
+    window.addEventListener('resize', () => {
+      setisMobile(window.matchMedia('(max-width:768px)').matches);
     });
   });
 
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (token) {
@@ -52,7 +52,7 @@ const App = () => {
   const [qty, setQty] = useState(1);
   const history = createBrowserHistory();
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
 
   const SearchedProducts = useSelector((state) => state.getSearchedProducts);
   const { loading, error, products } = SearchedProducts;
@@ -83,10 +83,10 @@ const App = () => {
     <Router>
       <div className="flex flex-col min-h-screen">
         <div>
-          {history.location.pathname === "/signup" ||
-          history.location.pathname === "/login" ||
-          history.location.pathname === "/forgotpassword" ||
-          history.location.pathname === "/Checkout" ? null : (
+          {history.location.pathname === '/signup' ||
+          history.location.pathname === '/login' ||
+          history.location.pathname === '/forgotpassword' ||
+          history.location.pathname === '/Checkout' ? null : (
             <Navbar
               cartItems={cartItems}
               isAuthenticated={isAuthenticated}
@@ -95,10 +95,10 @@ const App = () => {
               setSearchTerm={setSearchTerm}
             />
           )}
-          {history.location.pathname === "/signup" ||
-          history.location.pathname === "/login" ||
-          history.location.pathname === "/Checkout" ||
-          history.location.pathname === "/forgotpassword" ||
+          {history.location.pathname === '/signup' ||
+          history.location.pathname === '/login' ||
+          history.location.pathname === '/Checkout' ||
+          history.location.pathname === '/forgotpassword' ||
           isMobile ? null : (
             <Breadcrumbs />
           )}
@@ -172,14 +172,14 @@ const App = () => {
               )}
             />
             <Route>
-              {" "}
-              <h1>This page does not exist</h1>{" "}
+              {' '}
+              <h1>This page does not exist</h1>{' '}
             </Route>
           </Switch>
-          {history.location.pathname === "/signup" ||
-          history.location.pathname === "/login" ||
-          history.location.pathname === "/forgotpassword" ||
-          history.location.pathname === "/Checkout" ? null : (
+          {history.location.pathname === '/signup' ||
+          history.location.pathname === '/login' ||
+          history.location.pathname === '/forgotpassword' ||
+          history.location.pathname === '/Checkout' ? null : (
             <Footer className="fixed" />
           )}
         </div>

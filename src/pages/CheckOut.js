@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
-import buy27Logo from "./../assets/images/buy27logo.png";
-import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
-import PhoneIcon from "@material-ui/icons/Phone";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
-import CartItem from "../components/Cart/CartItems";
-import NumberFormat from "react-number-format";
-import { useHistory } from "react-router";
-import { PaystackButton } from "react-paystack";
+import React, { useState, useEffect } from 'react';
+import buy27Logo from './../assets/images/buy27logo.png';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import PhoneIcon from '@material-ui/icons/Phone';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import CartItem from '../components/Cart/CartItems';
+import NumberFormat from 'react-number-format';
+import { useHistory } from 'react-router';
+import { PaystackButton } from 'react-paystack';
+import { useDispatch, useSelector } from 'react-redux';
 
-const paystackConfig = require("../config/config").paystack;
+//Action
+import { createOrder as createorder } from '../redux/actions/orderAction';
+
+const paystackConfig = require('../config/config').paystack;
 
 export const CheckOut = ({
   qtyChangeHandler,
@@ -18,32 +22,49 @@ export const CheckOut = ({
   getCartCount,
 }) => {
   const [isMobile, setisMobile] = useState(
-    window.matchMedia("(max-width:768px)").matches
+    window.matchMedia('(max-width:768px)').matches
   );
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      setisMobile(window.matchMedia("(max-width:768px)").matches);
+    window.addEventListener('resize', () => {
+      setisMobile(window.matchMedia('(max-width:768px)').matches);
     });
   });
 
   const history = useHistory();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  const createOrder = useSelector((state) => state.orderInfo);
+  const { order } = createOrder;
+  console.log(order);
 
   useEffect(() => {
     if (user) {
       return null;
     } else {
-      history.push("/login");
+      history.push('/login');
     }
   }, [user, history]);
 
   const publicKey = paystackConfig.publicKey;
+  const dispatch = useDispatch();
+  const orderItems = JSON.parse(localStorage.getItem('cart'));
+  const orderData = {
+    orderItems: orderItems,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    city: user.city,
+    lga: user.lga,
+    street: user.street,
+    phone: user.phone,
+    user: user.id,
+  };
 
   const paystackSuccessAction = async (res) => {
     // setReference(new Date().getTime());
-    window.localStorage.removeItem("cart");
-    history.push("/");
+    dispatch(createorder(orderData));
+    window.localStorage.removeItem('cart');
+    history.push('/');
   };
 
   // you can call this function anything
@@ -52,16 +73,16 @@ export const CheckOut = ({
   };
 
   const componentProps = {
-    email: user ? user.email : "",
+    email: user ? user.email : '',
     amount: getCartTotalPrice() * 100,
     publicKey,
-    text: "Proceed to Payment",
+    text: 'Proceed to Payment',
     onSuccess: (res) => paystackSuccessAction(res),
     onClose: paystackCloseAction(),
   };
 
   if (getCartCount() === 0) {
-    return history.push("/");
+    return history.push('/');
   }
 
   return (
@@ -91,23 +112,23 @@ export const CheckOut = ({
               <h1 className="my-1 px-4 py-1">
                 <i>
                   <AccountCircleOutlinedIcon fontSize="small" />
-                </i>{" "}
-                {user ? user.firstName : ""} {user ? user.lastName : ""}
+                </i>{' '}
+                {user ? user.firstName : ''} {user ? user.lastName : ''}
               </h1>
               <h1 className="my-1 px-4 py-1">
-                {" "}
+                {' '}
                 <i>
                   <LocationOnIcon fontSize="small" />
-                </i>{" "}
-                {user ? user.street : ""} {user ? user.city : ""}{" "}
-                {user ? user.lga : ""}.
+                </i>{' '}
+                {user ? user.street : ''} {user ? user.city : ''}{' '}
+                {user ? user.lga : ''}.
               </h1>
               <h1 className="my-1 px-4 py-1">
-                {" "}
+                {' '}
                 <i>
                   <PhoneIcon fontSize="small" />
-                </i>{" "}
-                {user ? user.phone : ""}
+                </i>{' '}
+                {user ? user.phone : ''}
               </h1>
             </div>
           </div>
@@ -145,9 +166,9 @@ export const CheckOut = ({
             <h1 className="font-semibold">
               <NumberFormat
                 value={getCartTotalPrice()}
-                displayType={"text"}
+                displayType={'text'}
                 thousandSeparator={true}
-                prefix={"₦"}
+                prefix={'₦'}
               />
             </h1>
           </div>
@@ -164,9 +185,9 @@ export const CheckOut = ({
             <h1>
               <NumberFormat
                 value={getCartTotalPrice()}
-                displayType={"text"}
+                displayType={'text'}
                 thousandSeparator={true}
-                prefix={"₦"}
+                prefix={'₦'}
               />
             </h1>
           </div>

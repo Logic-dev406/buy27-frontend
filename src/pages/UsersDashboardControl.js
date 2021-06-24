@@ -1,39 +1,39 @@
-import React, { useState, useEffect } from "react";
-import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
-import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
-import AccountInfor from "../components/UserDashboardPages/AccountInformation";
-import DeliveryAddress from "../components/UserDashboardPages/DeliveryAddress";
-import MyOrders from "../components/UserDashboardPages/PreviousOrders";
-import OrderDetails from "../components/OrderDetail/OrderDetails";
+import React, { useState, useEffect } from 'react';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import ShoppingBasketOutlinedIcon from '@material-ui/icons/ShoppingBasketOutlined';
+import AccountInfor from '../components/UserDashboardPages/AccountInformation';
+import DeliveryAddress from '../components/UserDashboardPages/DeliveryAddress';
+import MyOrders from '../components/UserDashboardPages/PreviousOrders';
+import OrderDetails from '../components/OrderDetail/OrderDetails';
 import {
   Link,
   Switch,
   Route,
   useRouteMatch,
   useHistory,
-} from "react-router-dom";
-import { useDispatch } from "react-redux";
+} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 export const UsersDashboardControl = () => {
   const [isMobile, setisMobile] = useState(
-    window.matchMedia("(max-width:768px)").matches
+    window.matchMedia('(max-width:768px)').matches
   );
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      setisMobile(window.matchMedia("(max-width:768px)").matches);
+    window.addEventListener('resize', () => {
+      setisMobile(window.matchMedia('(max-width:768px)').matches);
     });
   });
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (token) {
       return null;
     } else {
-      history.push("/login");
+      history.push('/login');
     }
   }, [history, dispatch, token]);
 
@@ -43,7 +43,7 @@ export const UsersDashboardControl = () => {
     <div className="flex flex-col items-center bg-transparent md:bg-gray-100 ">
       <div className=" flex flex-col md:flex-row my-0 md:my-8 ">
         {isMobile ? (
-          ""
+          ''
         ) : (
           <div>
             <div className="bg-white h-96 py-5 pl-4 pr-4 mr-8 rounded">
@@ -84,11 +84,12 @@ export const UsersDashboardControl = () => {
           <Route path={`${path}/Delivery Address`}>
             <DeliveryAddress />
           </Route>
-          <Route path={`${path}/My Orders`} component={MyOrders}></Route>
-          <Route
-            path={`${path}/My Orders/Details`}
-            component={OrderDetails}
-          ></Route>
+          <Route path={`${path}/My Orders`}>
+            <MyOrders />
+          </Route>
+          <Route path={`${path}/My Orders/Details`}>
+            <OrderDetails />
+          </Route>
         </Switch>
       </div>
     </div>

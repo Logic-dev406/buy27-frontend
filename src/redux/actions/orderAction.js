@@ -3,11 +3,14 @@ import axios from 'axios';
 
 const Api = require('../../config/config');
 
-export const getProducts = () => async (dispatch) => {
+export const createOrder = (orderData) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.CREATE_ORDER_REQUEST });
 
-    const { data } = await axios.get(`${Api.LiveBackendUrl}/api/products`);
+    const { data } = await axios.post(
+      `${Api.LiveBackendUrl}/api/orders`,
+      orderData
+    );
 
     dispatch({
       type: actionTypes.CREATE_ORDER_SUCCESS,

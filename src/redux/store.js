@@ -20,7 +20,7 @@ const reducer = combineReducers({
   getProductDetails: getProductDetailsReducer,
   getSearchedProducts: getSearchedProductsReducer,
   auth: authReducer,
-  orderIfo: orderReducer,
+  orderInfo: orderReducer,
 });
 
 const middleware = [thunk];
