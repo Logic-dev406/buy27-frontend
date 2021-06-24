@@ -1,15 +1,15 @@
-import * as actionTypes from "../constants/authConstants";
-import setAuthToken from "../../helper/setAuthToken";
-import axios from "axios";
+import * as actionTypes from '../constants/authConstants';
+import setAuthToken from '../../helper/setAuthToken';
+import axios from 'axios';
 
-const paystackConfig = require("../../config/config");
+const Api = require('../../config/config');
 
 export const signUp = (formData) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.SIGNUP_REQUEST });
 
     const { data } = await axios.post(
-      `${paystackConfig.LiveBackendUrl}/api/users/register`,
+      `${Api.LiveBackendUrl}/api/users/register`,
       formData
     );
 
@@ -33,7 +33,7 @@ export const login = (formData) => async (dispatch) => {
     dispatch({ type: actionTypes.LOGIN_REQUEST });
 
     const { data } = await axios.post(
-      `${paystackConfig.LiveBackendUrl}/api/users/login`,
+      `${Api.LiveBackendUrl}/api/users/login`,
       formData
     );
 
@@ -59,9 +59,7 @@ export const loadUser = () => async (dispatch) => {
     }
     dispatch({ type: actionTypes.USER_REQUEST });
 
-    const { data } = await axios.get(
-      `${paystackConfig.LiveBackendUrl}/api/users/me`
-    );
+    const { data } = await axios.get(`${Api.LiveBackendUrl}/api/users/me`);
 
     dispatch({
       type: actionTypes.USER_LOADED,
@@ -86,7 +84,7 @@ export const UpdateProfile = (formData) => async (dispatch) => {
     dispatch({ type: actionTypes.UPDATE_PROFILE_REQUEST });
 
     const { data } = await axios.put(
-      `${paystackConfig.LiveBackendUrl}/api/users/update`,
+      `${Api.LiveBackendUrl}/api/users/update`,
       formData
     );
 
