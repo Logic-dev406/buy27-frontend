@@ -5,11 +5,7 @@ import NumberFormat from 'react-number-format';
 const ShopProducts = ({ product }) => {
   return (
     <div className="  bg-white  * hover:shadow-lg rounded">
-      <Link
-        to={`/Shop/${product.slug}`}
-        key={product.id}
-        className="flex flex-col"
-      >
+      <Link to={`/Shop/${product.slug}`} className="flex flex-col">
         <img
           className="h-40 md:h-48 w-36 md:w-44 rounded-t"
           src={product.image}

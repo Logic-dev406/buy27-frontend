@@ -55,7 +55,9 @@ const Shop = ({
             ) : error ? (
               <h2>{error}</h2>
             ) : (
-              products.map((product) => <ShopProduct product={product} />)
+              products.map((product) => (
+                <ShopProduct key={product.id} product={product} />
+              ))
             )}
           </div>
         </div>
