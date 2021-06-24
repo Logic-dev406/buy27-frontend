@@ -36,7 +36,6 @@ export const CheckOut = ({
 
   const createOrder = useSelector((state) => state.orderInfo);
   const { order } = createOrder;
-  console.log(order);
 
   useEffect(() => {
     if (user) {
@@ -49,7 +48,7 @@ export const CheckOut = ({
   const publicKey = paystackConfig.publicKey;
   const dispatch = useDispatch();
   const orderItems = JSON.parse(localStorage.getItem('cart'));
-  const orderData = {
+  let orderData = {
     orderItems: orderItems,
     firstName: user.firstName,
     lastName: user.lastName,
