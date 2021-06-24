@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import ShopProduct from "../components/Shop/ShopProducts";
-import ScrollToTop from "../components/Shop/ScrollToTop";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import ShopProduct from '../components/Shop/ShopProducts';
+import ScrollToTop from '../components/Shop/ScrollToTop';
+import { useSelector, useDispatch } from 'react-redux';
 
 //Action
-import { getProducts as listProducts } from "../redux/actions/productActions";
+import { getProducts as listProducts } from '../redux/actions/productActions';
 
 const Shop = ({
   searchLoading,
@@ -13,12 +13,12 @@ const Shop = ({
   getSearchedProducts,
 }) => {
   const [isMobile, setisMobile] = useState(
-    window.matchMedia("(max-width:768px)").matches
+    window.matchMedia('(max-width:768px)').matches
   );
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      setisMobile(window.matchMedia("(max-width:768px)").matches);
+    window.addEventListener('resize', () => {
+      setisMobile(window.matchMedia('(max-width:768px)').matches);
     });
   });
 
@@ -46,18 +46,20 @@ const Shop = ({
     <div className="flex flex-col bg-gray-100 h-full w-full">
       <div className="flex justify-center mx-0 md:mx-52">
         <div>
-          {isMobile ? "" : <div className="h-96 w-72 bg-white mr-5"></div>}
+          {isMobile ? '' : <div className="h-96 w-72 bg-white mr-5"></div>}
         </div>
-        <ShopProduct
-          products={products}
-          loading={loading}
-          error={error}
-          searchedProducts={searchedProducts}
-          searchError={searchError}
-          searchLoadin={searchLoading}
-          getSearchedProducts={getSearchedProducts}
-        />
-        <div>{isMobile ? "" : <ScrollToTop />}</div>
+        <div className="  bg-transparent md:bg-white">
+          <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-y-2 gap-x-2 md:gap-x-2 py-2 md:py-2 px2 md:px-2 bg-transparent">
+            {loading ? (
+              <h1>Loading...</h1>
+            ) : error ? (
+              <h2>{error}</h2>
+            ) : (
+              products.map((product) => <ShopProduct product={product} />)
+            )}
+          </div>
+        </div>
+        <div>{isMobile ? '' : <ScrollToTop />}</div>
       </div>
     </div>
   );
