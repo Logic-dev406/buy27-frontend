@@ -1,13 +1,13 @@
 import * as actionTypes from '../constants/orderConstants';
 import axios from 'axios';
 
+const Api = require('../../config/config');
+
 export const getProducts = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.CREATE_ORDER_REQUEST });
 
-    const { data } = await axios.get(
-      `${paystackConfig.LiveBackendUrl}/api/products`
-    );
+    const { data } = await axios.get(`${Api.LiveBackendUrl}/api/products`);
 
     dispatch({
       type: actionTypes.CREATE_ORDER_SUCCESS,
