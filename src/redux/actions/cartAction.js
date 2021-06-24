@@ -1,11 +1,11 @@
-import * as actionTypes from "../constants/cartConstants";
-import axios from "axios";
+import * as actionTypes from '../constants/cartConstants';
+import axios from 'axios';
 
-const paystackConfig = require("../../config/config");
+const Api = require('../../config/config');
 
 export const addToCart = (slug, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(
-    `${paystackConfig.LiveBackendUrl}/api/products/${slug}`
+    `${Api.LiveBackendUrl}/api/products/${slug}`
   );
 
   dispatch({
@@ -21,7 +21,7 @@ export const addToCart = (slug, qty) => async (dispatch, getState) => {
     },
   });
 
-  localStorage.setItem("cart", JSON.stringify(getState().cart.cartItems));
+  localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems));
 };
 
 export const removeFromCart = (slug) => (dispatch, getState) => {
@@ -30,5 +30,5 @@ export const removeFromCart = (slug) => (dispatch, getState) => {
     payload: slug,
   });
 
-  localStorage.setItem("cart", JSON.stringify(getState().cart.cartItems));
+  localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems));
 };
