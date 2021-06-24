@@ -1,15 +1,13 @@
-import * as actionTypes from "../constants/productConstants";
-import axios from "axios";
+import * as actionTypes from '../constants/productConstants';
+import axios from 'axios';
 
-const paystackConfig = require("../../config/config");
+const Api = require('../../config/config');
 
 export const getProducts = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCTS_REQUEST });
 
-    const { data } = await axios.get(
-      `${paystackConfig.LiveBackendUrl}/api/products`
-    );
+    const { data } = await axios.get(`${Api.LiveBackendUrl}/api/products`);
 
     dispatch({
       type: actionTypes.GET_PRODUCTS_SUCCESS,
@@ -31,7 +29,7 @@ export const getProductDetails = (slug) => async (dispatch) => {
     dispatch({ type: actionTypes.GET_PRODUCTS_DETAILS_REQUEST });
 
     const { data } = await axios.get(
-      `${paystackConfig.LiveBackendUrl}/api/products/${slug}`
+      `${Api.LiveBackendUrl}/api/products/${slug}`
     );
 
     dispatch({
@@ -54,7 +52,7 @@ export const getSearchedProducts = (input) => async (dispatch) => {
     dispatch({ type: actionTypes.GET_SEARCHED_PRODUCTS_REQUEST });
 
     const { data } = await axios.get(
-      `${paystackConfig.LiveBackendUrl}/api/products/search?name=${input}`
+      `${Api.LiveBackendUrl}/api/products/search?name=${input}`
     );
 
     dispatch({
@@ -77,7 +75,7 @@ export const getFeaturedProducts = () => async (dispatch) => {
     dispatch({ type: actionTypes.GET_FEATURED_PRODUCTS_REQUEST });
 
     const { data } = await axios.get(
-      `${paystackConfig.LiveBackendUrl}/api/products/get/featured/8`
+      `${Api.LiveBackendUrl}/api/products/get/featured/8`
     );
 
     dispatch({
