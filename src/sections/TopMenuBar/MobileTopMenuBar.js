@@ -1,26 +1,26 @@
-import React, { useState, Fragment } from "react";
-import MenuIcon from "@material-ui/icons/Menu";
+import React, { useState, Fragment } from 'react';
+import MenuIcon from '@material-ui/icons/Menu';
 // import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import ShoppingBasketOutlinedIcon from "@material-ui/icons/ShoppingBasketOutlined";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
-import CameraAltOutlinedIcon from "@material-ui/icons/CameraAltOutlined";
-import WatchOutlinedIcon from "@material-ui/icons/WatchOutlined";
-import WbIncandescentOutlinedIcon from "@material-ui/icons/WbIncandescentOutlined";
-import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
-import HomeWorkOutlinedIcon from "@material-ui/icons/HomeWorkOutlined";
-import PhoneOutlinedIcon from "@material-ui/icons/PhoneOutlined";
-import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
-import { useDispatch } from "react-redux";
+import ShoppingBasketOutlinedIcon from '@material-ui/icons/ShoppingBasketOutlined';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import CameraAltOutlinedIcon from '@material-ui/icons/CameraAltOutlined';
+import WatchOutlinedIcon from '@material-ui/icons/WatchOutlined';
+import WbIncandescentOutlinedIcon from '@material-ui/icons/WbIncandescentOutlined';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import HomeWorkOutlinedIcon from '@material-ui/icons/HomeWorkOutlined';
+import PhoneOutlinedIcon from '@material-ui/icons/PhoneOutlined';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+import { useDispatch } from 'react-redux';
 
-import { logout } from "../../redux/actions/authAction";
+import { logout } from '../../redux/actions/authAction';
 
 const MobileTopMenuBar = () => {
   const [active, setActive] = useState(false);
   const dispatch = useDispatch();
-  const user = JSON.parse(window.localStorage.getItem("user"));
+  const user = JSON.parse(window.localStorage.getItem('user'));
 
   return (
     <div className="flex items-center justify-between w-full h-6 bg-primary-dark text-white ">
@@ -79,21 +79,21 @@ const MobileTopMenuBar = () => {
 
               <a
                 href="/Dashboard"
-                className=" flex px-4 pt-2 border-t border-gray-300"
+                className=" flex px-4 py-2 border-t border-gray-300"
               >
-                <AccountCircleOutlinedIcon />{" "}
+                <AccountCircleOutlinedIcon />{' '}
                 <h1 className="ml-1">My Profile</h1>
               </a>
               <a href="/Dashboard/Delivery Address" className=" flex px-4 py-2">
                 <HomeWorkOutlinedIcon />
                 <h1 className="ml-1">My Address</h1>
               </a>
-              <a href="/Dashboard/My Orders" className=" flex px-4 pb-2">
+              <a href="/Dashboard/My Orders" className=" flex px-4 py-2">
                 <ShoppingBasketOutlinedIcon />
                 <h1 className="ml-1">My Orders</h1>
               </a>
               <a href="/" className="flex px-4 py-3 border-t border-gray-300">
-                OUR CATEGORIES{" "}
+                OUR CATEGORIES{' '}
                 <h1 className="ml-24 text-xs underline">See All</h1>
               </a>
               <a href="/" className="px-4 py-2">

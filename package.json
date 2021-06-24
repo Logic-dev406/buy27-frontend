@@ -40,7 +40,7 @@
     "trim-newlines": "^4.0.2",
     "url-parse": "^1.5.1",
     "web-vitals": "^2.0.1",
-    "webpack-dev-server": "^1.16.5",
+    "webpack": "^3.11.0",
     "yargs-parser": "^20.2.9"
   },
   "scripts": {
@@ -69,9 +69,13 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
+    "html-webpack-plugin": "^2.29.0",
     "postcss": "^8.3.5",
     "prettier": "2.3.1",
-    "tailwindcss": "^2.2.2"
+    "tailwindcss": "^2.2.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-middleware": "^1.12.2",
+    "webpack-dev-server": "^3.11.2"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "postcss.config.js",
