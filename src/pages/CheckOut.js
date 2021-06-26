@@ -7,7 +7,7 @@ import CartItem from '../components/Cart/CartItems';
 import NumberFormat from 'react-number-format';
 import { useHistory } from 'react-router';
 import { PaystackButton } from 'react-paystack';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 //Action
 import { createOrder as createorder } from '../redux/actions/orderAction';
@@ -32,10 +32,12 @@ export const CheckOut = ({
   });
 
   const history = useHistory();
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('user')) || '';
 
-  const createOrder = useSelector((state) => state.orderInfo);
-  const { order } = createOrder;
+  // const createOrder = useSelector((state) => state.orderInfo);
+  // const {} = createOrder;
+
+  // console.log(order);
 
   useEffect(() => {
     if (user) {
@@ -63,11 +65,13 @@ export const CheckOut = ({
     // setReference(new Date().getTime());
     dispatch(createorder(orderData));
     window.localStorage.removeItem('cart');
-    history.push('/');
+    window.location.reload({ forcedReload: false });
+    // console.log(res);
   };
 
   // you can call this function anything
   const paystackCloseAction = () => {
+    // Display payment not successfull message
     // setReference(new Date().getTime());
   };
 
@@ -81,6 +85,7 @@ export const CheckOut = ({
   };
 
   if (getCartCount() === 0) {
+    window.location.reload({ forcedReload: false });
     return history.push('/');
   }
 
