@@ -34,11 +34,6 @@ export const CheckOut = ({
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem('user')) || '';
 
-  // const createOrder = useSelector((state) => state.orderInfo);
-  // const {} = createOrder;
-
-  // console.log(order);
-
   useEffect(() => {
     if (user) {
       return null;
@@ -49,9 +44,18 @@ export const CheckOut = ({
 
   const publicKey = paystackConfig.publicKey;
   const dispatch = useDispatch();
-  const orderItems = JSON.parse(localStorage.getItem('cart'));
+
+  const orderItems = () => {
+    if (cartItems) {
+      return cartItems.map((item) => {
+        return { product: item.product, quantity: item.qty };
+      });
+    }
+  };
+
+  // console.log(orderItems());
   let orderData = {
-    orderItems: orderItems,
+    orderItems: orderItems(),
     firstName: user.firstName,
     lastName: user.lastName,
     city: user.city,
@@ -60,12 +64,13 @@ export const CheckOut = ({
     phone: user.phone,
     user: user.id,
   };
+  // console.log(orderData);
 
   const paystackSuccessAction = async (res) => {
     // setReference(new Date().getTime());
     dispatch(createorder(orderData));
-    window.localStorage.removeItem('cart');
-    window.location.reload({ forcedReload: false });
+    // window.localStorage.removeItem('cart');
+    // window.location.reload({ forcedReload: false });
     // console.log(res);
   };
 
