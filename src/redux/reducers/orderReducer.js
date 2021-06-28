@@ -4,31 +4,31 @@ export const orderReducer = (state = { order: {} }, action) => {
   switch (action.type) {
     case actionTypes.CREATE_ORDER_REQUEST:
       return {
-        loadingn: true,
+        loading: true,
       };
     case actionTypes.CREATE_ORDER_SUCCESS:
       return {
-        loadingn: false,
+        loading: false,
         order: action.payload,
       };
     case actionTypes.CREATE_ORDER_FAIL:
       return {
-        loadingn: false,
-        err: action.payload,
+        loading: false,
+        error: action.payload,
       };
     case actionTypes.GET_USER_ORDER_REQUEST:
       return {
-        loadingn: true,
+        loading: true,
       };
     case actionTypes.GET_USER_ORDER_SUCCESS:
       return {
-        loadingn: false,
+        loading: false,
         order: action.payload,
       };
     case actionTypes.GET_USER_ORDER_FAIL:
       return {
-        loadingn: false,
-        err: action.payload,
+        loading: false,
+        error: action.payload,
       };
     default:
       return state;

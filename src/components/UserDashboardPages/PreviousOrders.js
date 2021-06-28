@@ -20,11 +20,8 @@ export const PreviousOrders = () => {
 
   const dispatch = useDispatch();
 
-  //Add error pop up
   const getUserOrder = useSelector((state) => state.orderInfo);
-  const { order } = getUserOrder;
-
-  console.log(order);
+  const { order, error, loading } = getUserOrder;
 
   useEffect(() => {
     dispatch(getuserorder());
@@ -35,9 +32,21 @@ export const PreviousOrders = () => {
   return (
     <div>
       {isMobile ? (
-        <MobileOrder path={path} url={url} />
+        <MobileOrder
+          order={order}
+          error={error}
+          loading={loading}
+          path={path}
+          url={url}
+        />
       ) : (
-        <DesktopOrder path={path} url={url} />
+        <DesktopOrder
+          order={order}
+          error={error}
+          loading={loading}
+          path={path}
+          url={url}
+        />
       )}
     </div>
   );
