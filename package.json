@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "braces": "^3.0.2",
     "browserslist": "^4.16.6",
+    "dateformat": "^4.5.1",
     "dns-packet": "^5.2.4",
     "dotenv": "^10.0.0",
     "glob-parent": "^6.0.0",

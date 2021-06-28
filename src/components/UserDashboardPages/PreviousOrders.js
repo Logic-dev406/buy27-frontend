@@ -21,7 +21,7 @@ export const PreviousOrders = () => {
   const dispatch = useDispatch();
 
   const getUserOrder = useSelector((state) => state.orderInfo);
-  const { order, error, loading } = getUserOrder;
+  const { orders, error, loading } = getUserOrder;
 
   useEffect(() => {
     dispatch(getuserorder());
@@ -33,7 +33,7 @@ export const PreviousOrders = () => {
     <div>
       {isMobile ? (
         <MobileOrder
-          order={order}
+          orders={orders}
           error={error}
           loading={loading}
           path={path}
@@ -41,7 +41,7 @@ export const PreviousOrders = () => {
         />
       ) : (
         <DesktopOrder
-          order={order}
+          orders={orders}
           error={error}
           loading={loading}
           path={path}
