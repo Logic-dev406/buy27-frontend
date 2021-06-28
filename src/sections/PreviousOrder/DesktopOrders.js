@@ -47,60 +47,62 @@ const DesktopOrders = ({ path, url, orders, loading, error }) => {
                   {loading ? (
                     <h1>Loading...</h1>
                   ) : orders ? (
-                    orders.map((order) => {
-                      return (
-                        <div
-                          key={order._id}
-                          className=" flex flex-col justify-between py-4 px-4 mb-4 bg-transparent border border-gray rounded "
-                        >
-                          <div className="flex flex-col">
-                            <div className="flex justify-between">
-                              <div className="flex mr-52">
-                                <h1 className="font-semibold">Order No:</h1>
+                    orders
+                      .filter(
+                        (order) => order.status === 'pending' || 'delevered'
+                      )
+                      .map((order) => (
+                        <div key={order._id}>
+                          <div className=" flex flex-col justify-between py-4 px-4 mb-4 bg-transparent border border-gray rounded ">
+                            <div className="flex flex-col">
+                              <div className="flex justify-between">
+                                <div className="flex mr-52">
+                                  <h1 className="font-semibold">Order No:</h1>
+                                  <h1 className="font-normal ml-1">
+                                    {order.orderNo}
+                                  </h1>
+                                </div>
+                                <Link
+                                  to={`${url}/${order.orderNo}`}
+                                  className="text-sm text-primary-dark font-semibold"
+                                >
+                                  SEE DETAILS
+                                </Link>
+                              </div>
+                              <div className="flex mb-1">
+                                <h1 className="font-semibold">Date:</h1>
                                 <h1 className="font-normal ml-1">
-                                  {order.orderNo}
+                                  {' '}
+                                  {dateFormat(
+                                    order.dateOrdered,
+                                    'dd-mm-yyyy'
+                                  )}{' '}
                                 </h1>
                               </div>
-                              <Link
-                                to={`${url}/Details`}
-                                className="text-sm text-primary-dark font-semibold"
-                              >
-                                SEE DETAILS
-                              </Link>
+                              <div className=" flex flex-col mb-2 items-center justify-center text-white rounded text-xs h-5 w-16 bg-primary-dark">
+                                <h1 className="">
+                                  {' '}
+                                  {order.status.toUpperCase()}{' '}
+                                </h1>
+                              </div>
                             </div>
-                            <div className="flex mb-1">
-                              <h1 className="font-semibold">Date:</h1>
-                              <h1 className="font-normal ml-1">
-                                {' '}
-                                {dateFormat(
-                                  order.dateOrdered,
-                                  'dd-mm-yyyy'
-                                )}{' '}
-                              </h1>
+                            <div className="flex items-center">
+                              {order.orderItems.map((orderItem) => {
+                                return (
+                                  <img
+                                    key={orderItem._id}
+                                    className="h-10 w-10 mr-2 bg-black"
+                                    src={orderItem.product.image}
+                                    alt="product"
+                                  />
+                                );
+                              })}
                             </div>
-                            <div className=" flex flex-col mb-2 items-center text-white rounded text-sm w-16 bg-primary-dark">
-                              <h1 className="">Delivered</h1>
-                            </div>
-                          </div>
-                          <div className="flex items-center">
-                            {order.orderItems
-                              ? order.orderItems.map((orderItem) => {
-                                  return (
-                                    <img
-                                      key={orderItem._id}
-                                      className="h-10 w-10 mr-2 bg-black"
-                                      src={orderItem.product.image}
-                                      alt="product"
-                                    />
-                                  );
-                                })
-                              : ''}
                           </div>
                         </div>
-                      );
-                    })
+                      ))
                   ) : (
-                    ''
+                    <div>You have no order</div>
                   )}
                 </TabGroup.TabPanel>
                 <TabGroup.TabPanel
@@ -111,44 +113,68 @@ const DesktopOrders = ({ path, url, orders, loading, error }) => {
                 >
                   {loading ? (
                     <h1>Loading...</h1>
-                  ) : (
-                    <div className=" flex flex-col justify-between py-4 px-4 mb-4 bg-transparent border border-gray rounded ">
-                      <div className="flex flex-col">
-                        <div className="flex justify-between">
-                          <div className="flex mr-52">
-                            <h1>Order No:</h1>
-                            <h1 className="font-normal ml-1">28495839</h1>
+                  ) : orders ? (
+                    orders
+                      .filter((order) => order.status === 'closed')
+                      .map((order) => (
+                        <div key={order._id}>
+                          <div className=" flex flex-col justify-between py-4 px-4 mb-4 bg-transparent border border-gray rounded ">
+                            <div className="flex flex-col">
+                              <div className="flex justify-between">
+                                <div className="flex mr-52">
+                                  <h1 className="font-semibold">Order No:</h1>
+                                  <h1 className="font-normal ml-1">
+                                    {order.orderNo}
+                                  </h1>
+                                </div>
+                                <Link
+                                  to={`${url}/${order.orderNo}`}
+                                  className="text-sm text-primary-dark font-semibold"
+                                >
+                                  SEE DETAILS
+                                </Link>
+                              </div>
+                              <div className="flex mb-1">
+                                <h1 className="font-semibold">Date:</h1>
+                                <h1 className="font-normal ml-1">
+                                  {' '}
+                                  {dateFormat(
+                                    order.dateOrdered,
+                                    'dd-mm-yyyy'
+                                  )}{' '}
+                                </h1>
+                              </div>
+                              <div className=" flex flex-col mb-2 items-center justify-center text-white rounded text-xs h-5 w-16 bg-primary-dark">
+                                <h1 className="">
+                                  {' '}
+                                  {order.status.toUpperCase()}{' '}
+                                </h1>
+                              </div>
+                            </div>
+                            <div className="flex items-center">
+                              {order.orderItems.map((orderItem) => {
+                                return (
+                                  <img
+                                    key={orderItem._id}
+                                    className="h-10 w-10 mr-2 bg-black"
+                                    src={orderItem.product.image}
+                                    alt="product"
+                                  />
+                                );
+                              })}
+                            </div>
                           </div>
-                          <Link
-                            to={`${url}/Details`}
-                            className="text-sm text-primary-dark font-semibold"
-                          >
-                            SEE DETAILS
-                          </Link>
                         </div>
-                        <div className=" flex flex-col  items-center text-white rounded text-sm w-16 bg-primary-dark">
-                          <h1 className="">Delivered</h1>
-                        </div>
-                        <div className="flex">
-                          <h1>Date:</h1>
-                          <h1 className="font-normal ml-1">1-12-2021</h1>
-                        </div>
-                      </div>
-                      <div className="">
-                        <img
-                          className="h-10 w-10 mr-4 bg-black"
-                          src=""
-                          alt="Product"
-                        />
-                      </div>
-                    </div>
+                      ))
+                  ) : (
+                    <div>You have no cancelled order</div>
                   )}
                 </TabGroup.TabPanel>
               </div>
             </div>
           </TabGroup>
         </Route>
-        <Route exact={true} path={`${path}/Details`}>
+        <Route exact={true} path={`${path}/:orderNo`}>
           <OrdersDetails />
         </Route>
       </Switch>
