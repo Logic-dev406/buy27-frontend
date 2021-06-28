@@ -12,7 +12,7 @@ const DesktopOrders = ({ path, url, orders, loading, error }) => {
     <div>
       <Switch>
         <Route exact={true} path={path}>
-          <TabGroup numTabs={4} direction={TabGroup.direction.HORIZONTAL}>
+          <TabGroup numTabs={2} direction={TabGroup.direction.HORIZONTAL}>
             <div className=" bg-white">
               <div className="flex flex-col justify-center pl-4 h-16 w-full bg-white border-b">
                 <h1 className="font-bold text-sm">My Orders</h1>
