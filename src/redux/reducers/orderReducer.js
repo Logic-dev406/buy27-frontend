@@ -5,7 +5,7 @@ export const orderReducer = (state = { orders: [] }, action) => {
     case actionTypes.CREATE_ORDER_REQUEST:
       return {
         loading: true,
-        orders: [],
+        orders: {},
       };
     case actionTypes.CREATE_ORDER_SUCCESS:
       return {
@@ -17,9 +17,11 @@ export const orderReducer = (state = { orders: [] }, action) => {
         loading: false,
         error: action.payload,
       };
+
     case actionTypes.GET_USER_ORDER_LIST_REQUEST:
       return {
         loading: true,
+        orders: [],
       };
     case actionTypes.GET_USER_ORDER_LIST_SUCCESS:
       return {
@@ -32,6 +34,21 @@ export const orderReducer = (state = { orders: [] }, action) => {
         error: action.payload,
       };
 
+    case actionTypes.GET_SINGLE_ORDER_REQUEST:
+      return {
+        loading: true,
+        order: {},
+      };
+    case actionTypes.GET_SINGLE_ORDER_SUCCESS:
+      return {
+        loading: false,
+        order: action.payload,
+      };
+    case actionTypes.GET_SINGLE_ORDER_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
