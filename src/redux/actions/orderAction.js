@@ -54,3 +54,30 @@ export const getUserOrder = () => async (dispatch) => {
     });
   }
 };
+
+export const getSingleOrder = (orderNo) => async (dispatch) => {
+  try {
+    dispatch({ type: actionTypes.GET_SINGLE_ORDER_REQUEST });
+
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+
+    const { data } = await axios.get(
+      `${Api.LiveBackendUrl}/api/orders/${orderNo}`
+    );
+
+    dispatch({
+      type: actionTypes.GET_SINGLE_ORDER_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.GET_SINGLE_ORDER_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
