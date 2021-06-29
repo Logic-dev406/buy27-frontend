@@ -30,7 +30,7 @@ export const createOrder = (orderData) => async (dispatch) => {
 
 export const getUserOrder = () => async (dispatch) => {
   try {
-    dispatch({ type: actionTypes.GET_USER_ORDER_REQUEST });
+    dispatch({ type: actionTypes.GET_USER_ORDERS_REQUEST });
 
     if (localStorage.token) {
       setAuthToken(localStorage.token);
@@ -41,12 +41,12 @@ export const getUserOrder = () => async (dispatch) => {
     );
 
     dispatch({
-      type: actionTypes.GET_USER_ORDER_SUCCESS,
+      type: actionTypes.GET_USER_ORDERS_SUCCESS,
       payload: data.data,
     });
   } catch (error) {
     dispatch({
-      type: actionTypes.GET_USER_ORDER_FAIL,
+      type: actionTypes.GET_USER_ORDERS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

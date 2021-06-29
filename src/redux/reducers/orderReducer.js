@@ -17,20 +17,21 @@ export const orderReducer = (state = { orders: [] }, action) => {
         loading: false,
         error: action.payload,
       };
-    case actionTypes.GET_USER_ORDER_REQUEST:
+    case actionTypes.GET_USER_ORDERS_REQUEST:
       return {
         loading: true,
       };
-    case actionTypes.GET_USER_ORDER_SUCCESS:
+    case actionTypes.GET_USER_ORDERS_SUCCESS:
       return {
         loading: false,
         orders: action.payload,
       };
-    case actionTypes.GET_USER_ORDER_FAIL:
+    case actionTypes.GET_USER_ORDERS_FAIL:
       return {
         loading: false,
         error: action.payload,
       };
+
     default:
       return state;
   }
