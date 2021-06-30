@@ -1,11 +1,20 @@
 import React from 'react';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { Link } from 'react-router-dom';
+import dateFormat from 'dateformat';
+import NumberFormat from 'react-number-format';
 
-const DesktopOrderDetails = () => {
+const DesktopOrderDetails = ({
+  loading,
+  error,
+  order,
+  getsingleorder,
+  orderNo,
+}) => {
+  console.log(order.orderItems);
   return (
     <div>
-      <div className="h-screen w-full bg-white">
+      <div className="h-screen w-full bg-white px-2">
         <div className="flex items-center py-4 w-96 px-4 border-b">
           <Link to="/Dashboard/My Orders">
             <ArrowBackIcon />
@@ -14,23 +23,27 @@ const DesktopOrderDetails = () => {
         </div>
         <div className="border-b px-4 py-2">
           <div className="flex items-center mb-1 font-semibold">
-            <h1>Order no:</h1>
-            <h1>2983943049</h1>
+            <h1 className="mr-1">Order no:</h1>
+            <h1> {order.orderNo} </h1>
           </div>
           <h1> 1 item</h1>
-          <h1>Placed on 16-18-2021</h1>
-          <h1>Total price: 3,400</h1>
+          <h1>Placed on {dateFormat(order.dateOrdered, 'dd-mm-yyyy')}</h1>
+          <h1>
+            Total price:{' '}
+            <NumberFormat
+              value={order.totalPrice}
+              displayType={'text'}
+              thousandSeparator={true}
+              prefix={'₦'}
+            />
+          </h1>
+          <h1 className="flex flex-col  items-center text-white rounded text-sm w-16 bg-gray-500">
+            {order.status}
+          </h1>
         </div>
         <h1 className="py-2 px-4 font-semibold">ITEMS IN YOUR ORDER</h1>
         <div className=" flex justify-between px-4 bg-transparent border mx-4 rounded">
           <div className=" my-4">
-            <h1 className="flex flex-col  items-center text-white rounded text-sm w-16 bg-gray-500">
-              Cancelled
-            </h1>
-            <div className="flex">
-              <h1>Date:</h1>
-              <h1 className="font-normal ml-1">1-12-2021</h1>
-            </div>
             <div className="flex items-center ">
               <Link to="#" className="mr-4 mt-2">
                 <img className="h-20 w-20 bg-black" src="" alt="Product" />

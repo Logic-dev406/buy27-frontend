@@ -1,11 +1,11 @@
 import * as actionTypes from '../constants/orderConstants';
 
-export const createOrderReducer = (state = { orders: {} }, action) => {
+export const createOrderReducer = (state = { order: {} }, action) => {
   switch (action.type) {
     case actionTypes.CREATE_ORDER_REQUEST:
       return {
         loading: true,
-        orders: {},
+        order: {},
       };
     case actionTypes.CREATE_ORDER_SUCCESS:
       return {
@@ -44,7 +44,7 @@ export const getOrdersReducer = (state = { orders: [] }, action) => {
   }
 };
 
-export const getSingleOrderReducer = (state = { orders: {} }, action) => {
+export const getSingleOrderReducer = (state = { order: {} }, action) => {
   switch (action.type) {
     case actionTypes.GET_SINGLE_ORDER_REQUEST:
       return {

@@ -25,9 +25,8 @@ const OrderDetails = () => {
     dispatch(getsingleorder(orderNo));
   }, [getsingleorder]);
 
-  const getSingleOrder = useSelector((state) => state.orderInfo);
+  const getSingleOrder = useSelector((state) => state.getSingleOrder);
   const { order, error, loading } = getSingleOrder;
-  console.log(order);
 
   return (
     <div>
@@ -36,7 +35,6 @@ const OrderDetails = () => {
           loading={loading}
           error={error}
           order={order}
-          getsingleorder={getsingleorder}
           orderNo={orderNo}
         />
       ) : (
@@ -44,7 +42,6 @@ const OrderDetails = () => {
           loading={loading}
           error={error}
           order={order}
-          getsingleorder={getsingleorder}
           orderNo={orderNo}
         />
       )}
