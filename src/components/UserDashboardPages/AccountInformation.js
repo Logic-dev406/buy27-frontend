@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import validate from "../../helper/validator";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from 'react';
+import validate from '../../helper/validator';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { UpdateProfile } from "../../redux/actions/authAction";
+import { UpdateProfile } from '../../redux/actions/authAction';
 
 export const AccountInformation = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const [values, setvalues] = useState({
-    firstName: user ? user.firstName : "",
-    lastName: user ? user.lastName : "",
-    currentPassword: "",
-    NewPassword: "",
+    firstName: user ? user.firstName : '',
+    lastName: user ? user.lastName : '',
+    currentPassword: '',
+    NewPassword: '',
   });
 
   const dispatch = useDispatch();
@@ -35,10 +35,10 @@ export const AccountInformation = () => {
     }
     dispatch(UpdateProfile(values));
     setvalues({
-      firstName: user ? user.firstName : "",
-      lastName: user ? user.lastName : "",
-      currentPassword: "",
-      NewPassword: "",
+      firstName: user ? user.firstName : '',
+      lastName: user ? user.lastName : '',
+      currentPassword: '',
+      NewPassword: '',
     });
   };
 
@@ -57,7 +57,7 @@ export const AccountInformation = () => {
                 onChange={handleInput}
                 type="text"
                 name="firstName"
-                value={user ? values.firstName : ""}
+                value={user ? values.firstName : ''}
                 placeholder="Enter First Name"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 h-10 md:h-12 w-72 md:w-96"
               />
@@ -71,7 +71,7 @@ export const AccountInformation = () => {
                 onChange={handleInput}
                 type="email"
                 name="email"
-                value={user ? user.email : ""}
+                value={user ? user.email : ''}
                 placeholder="Enter Email Address"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
@@ -94,7 +94,7 @@ export const AccountInformation = () => {
                 onChange={handleInput}
                 type="text"
                 name="lastName"
-                value={user ? values.lastName : ""}
+                value={user ? values.lastName : ''}
                 placeholder="Enter Last Name"
                 className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4  h-10 md:h-12 w-72 md:w-96"
               />
@@ -118,7 +118,7 @@ export const AccountInformation = () => {
           onClick={handleSubmit}
           className="bg-primary-dark py-2 px-10 mb-4 rounded text-white focus:outline-none"
         >
-          {loading ? "Loading..." : "Save Changes"}
+          {loading ? 'Loading...' : 'Save Changes'}
         </button>
       </div>
     </div>

@@ -4,7 +4,6 @@ import ShoppingBasketOutlinedIcon from '@material-ui/icons/ShoppingBasketOutline
 import AccountInfor from '../components/UserDashboardPages/AccountInformation';
 import DeliveryAddress from '../components/UserDashboardPages/DeliveryAddress';
 import MyOrders from '../components/UserDashboardPages/PreviousOrders';
-import OrderDetails from '../components/OrderDetail/OrderDetails';
 import {
   Link,
   Switch,
@@ -14,7 +13,7 @@ import {
 } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-export const UsersDashboardControl = () => {
+const UsersDashboardControl = () => {
   const [isMobile, setisMobile] = useState(
     window.matchMedia('(max-width:768px)').matches
   );
@@ -86,9 +85,6 @@ export const UsersDashboardControl = () => {
           </Route>
           <Route path={`${path}/My Orders`}>
             <MyOrders />
-          </Route>
-          <Route path={`${path}/My Orders/Details`}>
-            <OrderDetails />
           </Route>
         </Switch>
       </div>

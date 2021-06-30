@@ -1,7 +1,7 @@
 import React from 'react';
 import { TabGroup } from '@statikly/funk';
 import { Link, Switch, Route } from 'react-router-dom';
-import OrdersDetails from '../../components/OrderDetail/OrderDetails';
+import OrdersDetails from '../../components/UserDashboardPages/OrderDetails';
 import dateFormat from 'dateformat';
 
 const MobileOrders = ({ path, url, orders, loading, error }) => {
