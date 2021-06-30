@@ -5,7 +5,11 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 //Reducers
 import { cartReducer } from './reducers/cartReducer';
 import { authReducer } from './reducers/authReducer';
-import { orderReducer } from './reducers/orderReducer';
+import {
+  createOrderReducer,
+  getOrdersReducer,
+  getSingleOrderReducer,
+} from './reducers/orderReducer';
 import {
   getFeaturedProductsReducer,
   getProductsReducer,
@@ -20,7 +24,9 @@ const reducer = combineReducers({
   getProductDetails: getProductDetailsReducer,
   getSearchedProducts: getSearchedProductsReducer,
   auth: authReducer,
-  getOrders: orderReducer,
+  getOrders: getOrdersReducer,
+  createOrder: createOrderReducer,
+  getSingleOrder: getSingleOrderReducer,
 });
 
 const middleware = [thunk];
