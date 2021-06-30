@@ -1,19 +1,19 @@
-import { Link } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
-import VisibilityIcon from "@material-ui/icons/Visibility";
-import validate from "../helper/validator";
-import buy27logo from "../assets/images/buy27logo.png";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import validate from '../helper/validator';
+import buy27logo from '../assets/images/buy27logo.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 //Actions
-import { login as logIn } from ".././redux/actions/authAction";
+import { login as logIn } from '.././redux/actions/authAction';
 
 export const SignIn = () => {
   const [values, setvalues] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -25,11 +25,11 @@ export const SignIn = () => {
 
   const login = useSelector((state) => state.auth);
   const { loading, error, isAuthenticated } = login;
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (isAuthenticated || token) {
-      history.push("/");
+      history.push('/');
     } else {
       return null;
     }
@@ -58,6 +58,12 @@ export const SignIn = () => {
   const ToggleShowPassword = () => {
     setShowPassword(!ShowPassword);
   };
+
+  // const handleEnterKeyPress = (e) => {
+  //   if (e.key === 'Enter') {
+  //     return handleSubmit;
+  //   }
+  // };
 
   return (
     <div className=" flex flex-col items-center justify-center h-screen w-full bg-gray-100">
@@ -98,7 +104,8 @@ export const SignIn = () => {
           <div className="flex items-center justify-between px-4 focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-1  h-10 md:h-12 w-72 md:w-96">
             <input
               onChange={handleInput}
-              type={ShowPassword === false ? "password" : "text"}
+              onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
+              type={ShowPassword === false ? 'password' : 'text'}
               name="password"
               value={values.password}
               placeholder="Enter Password"
@@ -130,7 +137,7 @@ export const SignIn = () => {
           onClick={handleSubmit}
           className="h-10 px-32 mt-8 focus:outline-none bg-primary-dark hover:bg-primary-light text-white rounded"
         >
-          {loading ? "Loading..." : "Login"}
+          {loading ? 'Loading...' : 'Login'}
         </button>
         <div className="flex flex-col items-center mt-10">
           <h1 className="text-sm">Dont have an Account?</h1>
