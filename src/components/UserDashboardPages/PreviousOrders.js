@@ -20,7 +20,7 @@ const PreviousOrders = () => {
 
   const dispatch = useDispatch();
 
-  const getUserOrder = useSelector((state) => state.orderInfo);
+  const getUserOrder = useSelector((state) => state.getOrders);
   const { orders, error, loading } = getUserOrder;
 
   useEffect(() => {

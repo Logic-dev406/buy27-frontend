@@ -1,6 +1,6 @@
 import * as actionTypes from '../constants/orderConstants';
 
-export const orderReducer = (state = { orders: [] }, action) => {
+export const createOrderReducer = (state = { orders: {} }, action) => {
   switch (action.type) {
     case actionTypes.CREATE_ORDER_REQUEST:
       return {
@@ -17,7 +17,13 @@ export const orderReducer = (state = { orders: [] }, action) => {
         loading: false,
         error: action.payload,
       };
+    default:
+      return state;
+  }
+};
 
+export const getOrdersReducer = (state = { orders: [] }, action) => {
+  switch (action.type) {
     case actionTypes.GET_USER_ORDER_LIST_REQUEST:
       return {
         loading: true,
@@ -33,7 +39,13 @@ export const orderReducer = (state = { orders: [] }, action) => {
         loading: false,
         error: action.payload,
       };
+    default:
+      return state;
+  }
+};
 
+export const getSingleOrderReducer = (state = { orders: {} }, action) => {
+  switch (action.type) {
     case actionTypes.GET_SINGLE_ORDER_REQUEST:
       return {
         loading: true,
