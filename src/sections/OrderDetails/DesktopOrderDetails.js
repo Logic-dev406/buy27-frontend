@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { Link } from 'react-router-dom';
+import { matchPath } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
 
 const DesktopOrderDetails = () => {
+  // const dispatch = useDispatch();
+
+  //   let { path, url } = useRouteMatch();
+
+  const getParams = (pathname) => {
+    const matchProfile = matchPath(pathname, {
+      path: `/profile/:profileId`,
+    });
+    return (matchProfile && matchProfile.params) || {};
+  };
+  useEffect(() => {
+    // console.log(getParams);
+    // dispatch(getsingleorder());
+  }, [getParams]);
+
   return (
     <div>
       <div className="h-screen w-full bg-white">

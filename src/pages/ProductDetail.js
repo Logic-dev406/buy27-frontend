@@ -1,26 +1,26 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useState, Fragment } from 'react';
 // import FavoriteIcon from '@material-ui/icons/Favorite';
-import StorefrontIcon from "@material-ui/icons/Storefront";
-import EmojiTransportationIcon from "@material-ui/icons/EmojiTransportation";
-import LocalShippingOutlinedIcon from "@material-ui/icons/LocalShippingOutlined";
-import AttachMoneyOutlinedIcon from "@material-ui/icons/AttachMoneyOutlined";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import WhatsAppIcon from "@material-ui/icons/WhatsApp";
-import { useSelector, useDispatch } from "react-redux";
-import NumberFormat from "react-number-format";
+import StorefrontIcon from '@material-ui/icons/Storefront';
+import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
+import LocalShippingOutlinedIcon from '@material-ui/icons/LocalShippingOutlined';
+import AttachMoneyOutlinedIcon from '@material-ui/icons/AttachMoneyOutlined';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import { useSelector, useDispatch } from 'react-redux';
+import NumberFormat from 'react-number-format';
 
 //Actions
-import { getProductDetails } from ".././redux/actions/productActions";
+import { getProductDetails } from '.././redux/actions/productActions';
 
 const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
   const [isMobile, setisMobile] = useState(
-    window.matchMedia("(max-width:768px)").matches
+    window.matchMedia('(max-width:768px)').matches
   );
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      setisMobile(window.matchMedia("(max-width:768px)").matches);
+    window.addEventListener('resize', () => {
+      setisMobile(window.matchMedia('(max-width:768px)').matches);
     });
   });
 
@@ -39,7 +39,7 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
 
   const addToCartHandler = () => {
     dispatch(addToCart(product.slug, qty));
-    history.push("/Cart");
+    history.push('/Cart');
   };
 
   const HandleImageClick = (index) => {
@@ -108,9 +108,9 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
                 <h1 className="text-2xl font-bold">
                   <NumberFormat
                     value={product.price}
-                    displayType={"text"}
+                    displayType={'text'}
                     thousandSeparator={true}
-                    prefix={"₦"}
+                    prefix={'₦'}
                   />
                 </h1>
                 <div className="border-b my-5"></div>
@@ -131,9 +131,9 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
                   </div>
                   <div>
                     <h1 className="">
-                      Status:{" "}
+                      Status:{' '}
                       <span>
-                        {product.countInStock > 0 ? "InStock" : "Out of Stock"}
+                        {product.countInStock > 0 ? 'InStock' : 'Out of Stock'}
                       </span>
                     </h1>
                   </div>
@@ -160,7 +160,7 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
                   <div className="text-black text-sm font-semibold">
                     <div>
                       <h1 className="mb-4">
-                        <EmojiTransportationIcon className="text-primary-dark mr-2" />{" "}
+                        <EmojiTransportationIcon className="text-primary-dark mr-2" />{' '}
                         Pickup & Pay on Collection Available
                       </h1>
                       <h1 className="mt-4">
@@ -173,7 +173,7 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
                   <div className="flex flex-col md:flex-row items-center justify-between text-black text-sm font-semibold">
                     <div className="">
                       <h1 className="mb-4">
-                        <EmojiTransportationIcon className="text-primary-dark mr-2" />{" "}
+                        <EmojiTransportationIcon className="text-primary-dark mr-2" />{' '}
                         Pickup & Pay on Collection Available
                       </h1>
                       <h1 className="mt-4">
@@ -183,7 +183,7 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
                     </div>
                     <div>
                       <h1 className="mb-4">
-                        <StorefrontIcon className="text-primary-dark mr-2" />{" "}
+                        <StorefrontIcon className="text-primary-dark mr-2" />{' '}
                         Buy27 Warehouse
                       </h1>
                       <h1 className="mt-4">

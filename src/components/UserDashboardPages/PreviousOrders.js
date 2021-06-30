@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 //Action
 import { getUserOrder as getuserorder } from '../../redux/actions/orderAction';
 
-export const PreviousOrders = () => {
+const PreviousOrders = () => {
   const [isMobile, setisMobile] = useState(
     window.matchMedia('(max-width:768px)').matches
   );
