@@ -117,7 +117,7 @@ const MobileOrderDetails = ({ loading, error, order }) => {
             </h1>
             <h1 className="py-1">Shipping Address</h1>
             <h1 className=" text-sm font-normal">
-              {order.fistName} {order.LastName}
+              {order.firstName} {order.lastName}
             </h1>
             <h1 className=" text-sm font-normal">{order.street}</h1>
             <h1 className=" text-sm font-normal">{order.lga}</h1>

@@ -129,8 +129,7 @@ const DesktopOrderDetails = ({ loading, error, order }) => {
               </h1>
               <h1 className="py-1 pl-4">Shipping Address</h1>
               <h1 className=" pl-4 text-sm font-normal">
-                {' '}
-                {order.fistName} {order.LastName}{' '}
+                {order.firstName} {order.lastName}
               </h1>
               <h1 className=" pl-4 text-sm font-normal"> {order.street} </h1>
               <h1 className=" pl-4 text-sm font-normal">{order.lga}</h1>
