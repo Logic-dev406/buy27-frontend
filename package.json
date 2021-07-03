@@ -47,7 +47,7 @@
   "scripts": {
     "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
-    "build:css": "tailwind build src/style/tailwind.css -o src/style/main.css",
+    "build:css": "tailwind build -i src/style/tailwind.css -o src/style/main.css",
     "build:watch": "tailwind build src/style/tailwind.css -o src/style/main.css --watch"
   },
   "eslintConfig": {
