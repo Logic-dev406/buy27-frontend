@@ -7,7 +7,6 @@ import dateFormat from 'dateformat';
 const DesktopOrders = ({ path, url, orders, loading, error }) => {
   /// handle error popup
 
-  console.log(orders);
   return (
     <div>
       <Switch>

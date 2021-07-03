@@ -28,24 +28,12 @@ const OrderDetails = () => {
   const getSingleOrder = useSelector((state) => state.getSingleOrder);
   const { order, error, loading } = getSingleOrder;
 
-  // console.log(order.orderItems.lenght || '');
-
   return (
     <div>
       {isMobile ? (
-        <MobileOrderDetails
-          loading={loading}
-          error={error}
-          order={order}
-          orderNo={orderNo}
-        />
+        <MobileOrderDetails loading={loading} error={error} order={order} />
       ) : (
-        <DesktopOrderDetails
-          loading={loading}
-          error={error}
-          order={order}
-          orderNo={orderNo}
-        />
+        <DesktopOrderDetails loading={loading} error={error} order={order} />
       )}
     </div>
   );
