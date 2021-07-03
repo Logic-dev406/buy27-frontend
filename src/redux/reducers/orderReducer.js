@@ -61,6 +61,10 @@ export const getSingleOrderReducer = (state = { order: {} }, action) => {
         loading: false,
         error: action.payload,
       };
+    case actionTypes.GET_SINGLE_ORDER_RESET:
+      return {
+        product: {},
+      };
     default:
       return state;
   }

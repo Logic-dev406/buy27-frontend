@@ -11,7 +11,7 @@ const DesktopOrderDetails = ({
   getsingleorder,
   orderNo,
 }) => {
-  console.log(order.orderItems);
+  // console.log(order.orderItems);
   return (
     <div>
       <div className="h-screen w-full bg-white px-2">

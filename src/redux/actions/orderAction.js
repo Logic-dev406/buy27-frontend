@@ -81,3 +81,9 @@ export const getSingleOrder = (orderNo) => async (dispatch) => {
     });
   }
 };
+
+export const removeSingleOrder = () => (dispatch) => {
+  dispatch({
+    type: actionTypes.GET_SINGLE_ORDER_RESET,
+  });
+};

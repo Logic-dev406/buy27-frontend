@@ -27,6 +27,7 @@ const OrderDetails = () => {
 
   const getSingleOrder = useSelector((state) => state.getSingleOrder);
   const { order, error, loading } = getSingleOrder;
+  console.log(order.orderItems);
 
   return (
     <div>

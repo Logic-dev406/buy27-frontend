@@ -1,14 +1,14 @@
-import React from "react";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import logo from "../../assets/images/buy27logo.png";
-import SearchIcon from "@material-ui/icons/Search";
-import ShoppingCartOutlined from "@material-ui/icons/ShoppingCartOutlined";
-import TopMenuBar from "../../components/TopMenuBar";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import logo from '../../assets/images/buy27logo.png';
+import SearchIcon from '@material-ui/icons/Search';
+import ShoppingCartOutlined from '@material-ui/icons/ShoppingCartOutlined';
+import TopMenuBar from '../../components/TopMenuBar';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const DesktopNavbar = ({
   getCartCount,
@@ -28,17 +28,17 @@ const DesktopNavbar = ({
   };
 
   const handleEnterKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       dispatch(getSearchedProducts(searchTerm));
       history.push(`/Search`);
-      setSearchTerm("");
+      setSearchTerm('');
     }
   };
 
   const handleSearchClicked = (e) => {
     dispatch(getSearchedProducts(searchTerm));
     history.push(`/Search`);
-    setSearchTerm("");
+    setSearchTerm('');
   };
 
   return (
@@ -75,7 +75,7 @@ const DesktopNavbar = ({
           </div>
         </div>
         <div className="flex">
-          <div className="items-center justify-center border pl-2 rounded bg-primary-light text-white">
+          <div className="flex items-center justify-center border pl-2 rounded bg-primary-light text-white">
             <input
               onChange={handleInput}
               onKeyPress={handleEnterKeyPress}
@@ -83,7 +83,7 @@ const DesktopNavbar = ({
               value={searchTerm}
               placeholder="Search Products"
               className="focus: outline-none bg-transparent"
-            />{" "}
+            />{' '}
             <button
               onClick={handleSearchClicked}
               className="focus:outline-none bg-primary-dark py-1 px-1 rounded-r"
