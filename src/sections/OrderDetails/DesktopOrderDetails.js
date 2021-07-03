@@ -11,12 +11,13 @@ const DesktopOrderDetails = ({ loading, error, order }) => {
         <div>Loading...</div>
       ) : (
         <div className="h-screen w-full bg-white px-2">
-          <div className="flex items-center py-4 w-96 px-4 border-b">
+          <div className="flex items-center py-4 w-96 px-4">
             <Link to="/Dashboard/My Orders">
               <ArrowBackIcon />
             </Link>
             <h1 className="font-semibold text-lg ml-4">OrderDetails</h1>
           </div>
+          <p className="border-b"></p>
           <div className="border-b px-4 py-2">
             <div className="flex items-center mb-1 font-semibold">
               <h1 className="mr-1">Order no:</h1>
