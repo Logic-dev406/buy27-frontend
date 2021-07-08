@@ -27,7 +27,7 @@ const FeaturedProduct = () => {
             These are some of our top best selling products on our site.
           </h1>
         </div>
-        <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-y-5 gap-x-2 md:gap-x-5 bg-transparent md:bg-white p-0 md:p-5 mt-5">
+        <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-y-5 gap-x-2 md:gap-x-5 bg-transparent p-0 md:p-5 mt-5">
           {loading ? (
             <h1>Loading...</h1>
           ) : error ? (
@@ -37,10 +37,10 @@ const FeaturedProduct = () => {
               <Link
                 to={`/Shop/${product.slug}`}
                 key={product.id}
-                className="bg-white * hover:shadow-lg h-60 md:h-72 w-36 md:w-44 rounded"
+                className="bg- * hover:shadow-lg h-52 md:h-60 w-36 md:w-44"
               >
                 <img
-                  className="h-40 md:h-48 w-40 md:w-48 rounded-t"
+                  className="h-40 md:h-48 w-40 md:w-48 "
                   src={product.image}
                   alt="product"
                 />
