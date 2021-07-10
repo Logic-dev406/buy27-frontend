@@ -31,7 +31,7 @@ const Banner = () => {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row justify-center items-center mx-5  md:my-8">
+      <div className="flex flex-col md:flex-row justify-center items-center mx-5 my-4 md:my-8">
         <Carousel
           arrows={false}
           swipeable={false}
