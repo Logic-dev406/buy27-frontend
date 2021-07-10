@@ -8,6 +8,8 @@ import NumberFormat from 'react-number-format';
 import { useHistory } from 'react-router';
 import { PaystackButton } from 'react-paystack';
 import { useDispatch } from 'react-redux';
+// import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //Action
 import { createOrder as createorder } from '../redux/actions/orderAction';
@@ -53,7 +55,6 @@ export const CheckOut = ({
     }
   };
 
-  // console.log(orderItems());
   let orderData = {
     orderItems: orderItems(),
     firstName: user.firstName,
@@ -64,15 +65,17 @@ export const CheckOut = ({
     phone: user.phone,
     user: user.id,
   };
-  // console.log(orderData);
 
   const paystackSuccessAction = async (res) => {
     // setReference(new Date().getTime());
     dispatch(createorder(orderData));
-    // window.localStorage.removeItem('cart');
-    // window.location.reload({ forcedReload: false });
-    // console.log(res);
+    window.localStorage.removeItem('cart');
+    window.location.reload({ forcedReload: false });
+    console.log(res);
   };
+
+  // toast('Payment Unsuccessfull');
+  // const notify = () => toast('Wow so easy!');
 
   // you can call this function anything
   const paystackCloseAction = () => {
