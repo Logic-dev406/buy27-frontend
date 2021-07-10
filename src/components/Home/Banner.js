@@ -33,8 +33,8 @@ const Banner = () => {
     <div>
       <div className="flex flex-col md:flex-row justify-center items-center mx-5 my-4 md:my-8">
         <Carousel
-          arrows={false}
-          swipeable={false}
+          arrows={true}
+          swipeable={true}
           draggable={false}
           showDots={true}
           responsive={responsive}
@@ -54,17 +54,17 @@ const Banner = () => {
           <img
             src={slider1}
             alt="slider1"
-            className=" w-full h-full rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
+            className=" w-full h-full rounded bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
           />
           <img
             src={slider2}
             alt="slider2"
-            className=" w-full h-full rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
+            className=" w-full h-full rounded bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
           />
           <img
             src={slider3}
             alt="slider3"
-            className=" w-full h-full rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
+            className=" w-full h-full rounded bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
           />
         </Carousel>
         <div className="flex grid grid-cols-2 gap-y-4 md:gap-y-8 gap-x-4 md:gap-x-4 mt-4 md:mt-0 ">
