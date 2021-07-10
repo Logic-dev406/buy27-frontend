@@ -31,7 +31,7 @@ const Banner = () => {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row justify-center items-center my-4 md:my-8">
+      <div className="flex flex-col md:flex-row justify-center items-center mx-5  md:my-8">
         <Carousel
           arrows={false}
           swipeable={false}
@@ -49,31 +49,24 @@ const Banner = () => {
           removeArrowOnDeviceType={['tablet', 'mobile']}
           dotListClass="custom-dot-list-style"
           itemClass="carousel-item-padding-40-px"
-          className=" h-96 w-5/12 mr-5 rounded focus:outline-none "
+          className=" h-56 md:h-80 lg:h-96 w-full md:w-full lg:w-5/12 mr-0 md:mr-0 lg:mr-5 rounded focus:outline-none "
         >
           <img
             src={slider1}
             alt="slider1"
-            className=" w-full h-full rounded-none md:rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
+            className=" w-full h-full rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
           />
           <img
             src={slider2}
             alt="slider2"
-            className=" w-full h-full rounded-none md:rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
+            className=" w-full h-full rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
           />
           <img
             src={slider3}
             alt="slider3"
-            className=" w-full h-full rounded-none md:rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
+            className=" w-full h-full rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
           />
         </Carousel>
-        {/* <div className=" flex items-center overflow-hidden rounded-none md:rounded-md bg-contain mr-0  md:bg-cover bg-no-repeat bg-center h-56 md:h-96 w-full md:max-w-screen-md">
-          <img
-            src={banner}
-            alt="banner"
-            className=" w-full h-full rounded-none md:rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center"
-          />
-        </div> */}
         <div className="flex grid grid-cols-2 gap-y-4 md:gap-y-8 gap-x-4 md:gap-x-4 mt-4 md:mt-0 ">
           <div className="h-36 md:h-44 w-36 md:w-44 bg-primary-light rounded-md">
             1
