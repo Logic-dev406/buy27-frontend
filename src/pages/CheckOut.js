@@ -8,7 +8,7 @@ import NumberFormat from 'react-number-format';
 import { useHistory } from 'react-router';
 import { PaystackButton } from 'react-paystack';
 import { useDispatch } from 'react-redux';
-// import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 //Action
@@ -74,11 +74,11 @@ export const CheckOut = ({
     console.log(res);
   };
 
-  // toast('Payment Unsuccessfull');
   // const notify = () => toast('Wow so easy!');
 
   // you can call this function anything
   const paystackCloseAction = () => {
+    toast('Payment Unsuccessfull');
     // Display payment not successfull message
     // setReference(new Date().getTime());
   };
@@ -99,6 +99,7 @@ export const CheckOut = ({
 
   return (
     <div className="flex flex-col px-0 pb-5 md:pb-10 md:px-52 bg-gray-100 overflow-y-auto h-screen w-full">
+      <ToastContainer />
       <div className="flex items-center justify-between px-4 md:px-0 pt-3 md:pt-8 pb-3 md:pb-10">
         <a href="/">
           <img className="w-14 md:w-40" src={buy27Logo} alt="logo" />
