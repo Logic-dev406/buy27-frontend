@@ -17,7 +17,7 @@ function ContactUs() {
   };
 
   return (
-    <div className=" w-full flex flex-col items-center justify-center px-52 py-36 bg-gray-100">
+    <div className=" w-full flex flex-col items-center justify-center md:px-52 py-8 md:py-28 bg-gray-100">
       <h1 className="text-3xl font-bold mb-10">Contact Us</h1>
       <div className="flex w-full items-center justify-center mb-5">
         <div className="flex flex-col w-full ">
@@ -72,6 +72,9 @@ function ContactUs() {
           className="focus: outline-none bg-transparent border border-primary-dark px-2 h-10 md:h-28 w-72 md:w-full"
         />
       </div>
+      <button className="h-10 w-28 rounded bg-primary-light hover:bg-primary-dark font-normal text-sm text-white mt-10">
+        SEND
+      </button>
     </div>
   );
 }
