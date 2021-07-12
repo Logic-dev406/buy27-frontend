@@ -17,10 +17,10 @@ function ContactUs() {
   };
 
   return (
-    <div className=" w-full flex flex-col items-center justify-center md:px-52 py-8 md:py-28 bg-gray-100">
+    <div className=" w-full flex flex-col items-center justify-center px-2 md:px-10 lg:px-52 py-8 md:py-28 bg-gray-100">
       <h1 className="text-3xl font-bold mb-10">Contact Us</h1>
-      <div className="flex w-full items-center justify-center mb-5">
-        <div className="flex flex-col w-full ">
+      <div className="flex flex-col md:flex-col lg:flex-row w-full items-center justify-center mb-5">
+        <div className="flex flex-col  w-full ">
           <label htmlFor="firstName">First Name</label>
           <input
             onChange={handleInput}
@@ -29,10 +29,10 @@ function ContactUs() {
             name="firstName"
             value={values.firstName}
             placeholder="Enter your First Name"
-            className="focus: outline-none bg-transparent border border-primary-dark pl-4 h-10 md:h-12 w-72 md:w-full"
+            className="focus:outline-none items-center bg-transparent border border-primary-dark pl-4 h-10 md:h-12 w-72 md:w-full"
           />
         </div>
-        <div className="flex flex-col w-full mx-5">
+        <div className="flex flex-col  w-full mx-0 lg:mx-5 my-2">
           <label htmlFor="lastName">Last Name</label>
           <input
             onChange={handleInput}
@@ -41,10 +41,10 @@ function ContactUs() {
             name="lastName"
             value={values.lastName}
             placeholder="Enter your Last Name"
-            className="focus: outline-none bg-transparent border border-primary-dark pl-4 h-10 md:h-12 w-72 md:w-full"
+            className="focus:outline-none items-center bg-transparent border border-primary-dark pl-4 h-10 md:h-12 w-72 md:w-full"
           />
         </div>
-        <div className="flex flex-col w-full ">
+        <div className="flex flex-col  w-full my-2 ">
           <label htmlFor="email">Email Address</label>
           <input
             onChange={handleInput}
@@ -53,11 +53,11 @@ function ContactUs() {
             name="email"
             value={values.email}
             placeholder="Enter your Email Address"
-            className="focus: outline-none bg-transparent border border-primary-dark pl-4 h-10 md:h-12 w-72 md:w-full"
+            className="focus:outline-none items-center bg-transparent border border-primary-dark pl-4 h-10 md:h-12 w-72 md:w-full"
           />
         </div>
       </div>
-      <div className="flex flex-col w-full ">
+      <div className="flex flex-col  w-full mt-2 ">
         <label htmlFor="message">Message</label>
         <textarea
           style={{
@@ -69,10 +69,10 @@ function ContactUs() {
           name="message"
           value={values.message}
           placeholder="Enter your Message"
-          className="focus: outline-none bg-transparent border border-primary-dark px-2 h-10 md:h-28 w-72 md:w-full"
+          className="focus:outline-none bg-transparent border border-primary-dark px-2 h-20 md:h-28 w-72 md:w-full"
         />
       </div>
-      <button className="h-10 w-28 rounded bg-primary-light hover:bg-primary-dark font-normal text-sm text-white mt-10">
+      <button className="h-10 w-28 focus:outline-none items-center rounded bg-primary-light hover:bg-primary-dark font-normal text-sm text-white mt-10">
         SEND
       </button>
     </div>
