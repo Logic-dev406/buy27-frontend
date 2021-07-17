@@ -49,7 +49,7 @@ const Banner = () => {
           removeArrowOnDeviceType={['tablet', 'mobile']}
           dotListClass="custom-dot-list-style"
           itemClass="carousel-item-padding-40-px"
-          className=" h-56 md:h-80 lg:h-96 w-full md:w-full lg:w-5/12 mr-0 md:mr-0 lg:mr-5 rounded focus:outline-none "
+          className=" h-56 md:h-80 lg:h-96 w-full md:w-full lg:w-5/12 mr-0 md:mr-0 lg:mr-5 rounded focus:outline-none z-0 "
         >
           <img
             src={slider1}

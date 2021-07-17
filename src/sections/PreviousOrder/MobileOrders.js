@@ -37,7 +37,7 @@ const MobileOrders = ({ path, url, orders, loading, error }) => {
               <div className=" relative flex flex-col items-center h-screen w-screen overflow-y-auto pt-4 ">
                 <TabGroup.TabPanel
                   index={0}
-                  className=" absolute pb-4 w-full transition-all transform flex flex-col items-center"
+                  className=" absolute z-10 pb-4 w-full transition-all transform flex flex-col items-center"
                   activeClassName="opacity-100 duration-500 translate-x-0"
                   inactiveClassName=" opacity-0 -translate-x-2"
                 >
@@ -94,7 +94,7 @@ const MobileOrders = ({ path, url, orders, loading, error }) => {
                 </TabGroup.TabPanel>
                 <TabGroup.TabPanel
                   index={1}
-                  className=" absolute pb-4 transition-all transform flex flex-col"
+                  className=" absolute z-10 pb-4 transition-all transform flex flex-col"
                   activeClassName="opacity-100 duration-500 translate-x-0"
                   inactiveClassName=" opacity-0 -translate-x-2"
                 >

@@ -35,7 +35,7 @@ const MobileTopMenuBar = () => {
             <MenuIcon />
           </button>
           {active && (
-            <div className="flex flex-col absolute text-primary-dark font-semibold w-full h-full bg-white py-2 text-sm overflow-y-scroll ">
+            <div className="flex flex-col absolute z-20 text-primary-dark font-semibold w-full h-full bg-white py-2 text-sm overflow-y-scroll ">
               <div className=" flex flex-col justify-center px-4 items-start py-2 w-full bg-transparent">
                 {user ? (
                   <div>

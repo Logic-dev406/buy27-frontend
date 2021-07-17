@@ -48,7 +48,7 @@ const Shop = ({
         <div>
           {isMobile ? '' : <div className="h-96 w-72 bg-white mr-5"></div>}
         </div>
-        <div className="  bg-black ">
+        <div className="  bg-transparent ">
           <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-2 md:gap-y-6 gap-x-2 md:gap-x-2 py-2 md:py-4 px2 md:px-0 bg-transparent">
             {loading ? (
               <h1>Loading...</h1>
