@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import validate from "../../helper/validator";
+import React, { useState } from 'react';
+import { useHistory, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import validate from '../../helper/validator';
 
-import { UpdateProfile } from "../../redux/actions/authAction";
+import { UpdateProfile } from '../../redux/actions/authAction';
 
 export const UpdateAddress = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem('user'));
   const [errors, setErrors] = useState({});
   const history = useHistory();
 
   const [values, setvalues] = useState({
     firstName: user.firstName,
     phone: user.phone,
-    state: user.state,
+    state: user.state || 'select',
     lastName: user.lastName,
-    lga: user.lga,
+    lga: user.lga || 'select',
     city: user.city,
     direction: user.direction,
     street: user.street,
@@ -58,7 +58,7 @@ export const UpdateAddress = () => {
       direction: user.direction,
       street: user.street,
     });
-    history.push("/Dashboard/Delivery Address");
+    history.push('/Dashboard/Delivery Address');
   };
 
   return (
@@ -120,7 +120,6 @@ export const UpdateAddress = () => {
                 name="state"
                 value={values.state}
               >
-                <option defaultValue>select</option>
                 <option value="Abuja">Abuja</option>
               </select>
               {errors.State && (
@@ -177,7 +176,6 @@ export const UpdateAddress = () => {
                 name="lga"
                 value={values.lga}
               >
-                <option defaultValue>select</option>
                 <option value="Abuja Municiple">Abuja Municiple</option>
                 <option value="Buari">Buari</option>
                 <option value="kuje">Kuje</option>
@@ -195,7 +193,7 @@ export const UpdateAddress = () => {
           onClick={handleSubmit}
           className="bg-primary-dark py-2 px-10 mb-4 rounded text-white focus:outline-none"
         >
-          {loading ? "Loading..." : "Save Changes"}
+          {loading ? 'Loading...' : 'Save Changes'}
         </button>
       </div>
     </div>
