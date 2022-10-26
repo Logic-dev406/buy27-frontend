@@ -66,7 +66,12 @@ const FeaturedProduct = () => {
         >
           <h1 className="text-white text-center text-sm">VIEW ALL PRODUCTS</h1>
         </a>
-        <div className="bg-gray-500 h-52 md:h-72 w-full md:w-2/3 mb-8"></div>
+        <div
+          style={{
+            backgroundImage: `url("https://img.freepik.com/free-vector/flat-geometric-fashion-youtube-thumbnail_23-2148918593.jpg?w=2000&t=st=1666798248~exp=1666798848~hmac=c9327a9aacb55c765c45aa611208b367126819d4e0e3f7cc8786a4c486c37ad7")`,
+          }}
+          className="bg-gray-500 bg-top bg-no-repeat bg-cover h-52 md:h-72 w-full md:w-2/3 mb-8"
+        ></div>
       </div>
     </div>
   );
