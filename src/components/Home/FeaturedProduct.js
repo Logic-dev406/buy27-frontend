@@ -37,7 +37,7 @@ const FeaturedProduct = () => {
               <Link
                 to={`/Shop/${product.slug}`}
                 key={product.id}
-                className="bg- * hover:shadow-lg h-52 md:h-60 w-36 md:w-44"
+                className="bg- * hover:shadow-lg h-auto w-36 md:w-44 pb-4 "
               >
                 <img
                   className="h-40 md:h-48 w-40 md:w-48 "

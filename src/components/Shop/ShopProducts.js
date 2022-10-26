@@ -4,7 +4,7 @@ import NumberFormat from 'react-number-format';
 
 const ShopProducts = ({ product }) => {
   return (
-    <div className="  bg-white  * hover:shadow-lg border-0 hover:border-2 ">
+    <div className=" w-36 md:w-44  bg-white  * hover:shadow-lg border-0 hover:border-2 ">
       <Link to={`/Shop/${product.slug}`} className="flex flex-col">
         <img
           className="h-40 md:h-48 w-36 md:w-44 "
