@@ -70,25 +70,25 @@ const Banner = () => {
         <div className="flex grid grid-cols-2 gap-y-4 md:gap-y-8 gap-x-4 md:gap-x-4 mt-4 md:mt-0 ">
           <div className="h-36 md:h-44 w-36 md:w-44 bg-primary-light rounded-md overflow-hidden">
             <img
-              alt="image"
+              alt="banner"
               src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/simple-modern-sale-clothing-ad-design-template-be2b43d97d7d625acf836a41576cd3ff_screen.jpg?ts=1609619222"
             />
           </div>
           <div className="h-36 md:h-44 w-36 md:w-44 bg-primary-light rounded-md overflow-hidden">
             <img
-              alt="image"
+              alt="banner"
               src="https://images.all-free-download.com/images/graphiclarge/sales_banner_fashion_clothes_design_elements_texts_decor_6834779.jpg"
             />
           </div>
           <div className="h-36 md:h-44 w-36 md:w-44 bg-primary-dark rounded-md overflow-hidden">
             <img
-              alt="image"
+              alt="banner"
               src="https://graphicriver.img.customer.envatousercontent.com/files/221873393/590x.jpg?auto=compress%2Cformat&fit=crop&crop=top&w=590&h=590&s=9bdda0e66c345c4e6ca13b1fc88164aa"
             />
           </div>
           <div className="h-36 md:h-44 w-36 md:w-44 bg-primary-dark rounded-md overflow-hidden">
             <img
-              alt="image"
+              alt="banner"
               src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/d6f533123229541.60ea072c92bbf.jpg"
             />
           </div>
